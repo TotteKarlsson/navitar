@@ -55,7 +55,7 @@ object Form1: TForm1
     end
     object ConnectBtn: TButton
       Left = 32
-      Top = 160
+      Top = 104
       Width = 153
       Height = 57
       Caption = 'Connect'
@@ -129,7 +129,7 @@ object Form1: TForm1
     end
     object ReadBtn: TButton
       Left = 32
-      Top = 288
+      Top = 336
       Width = 153
       Height = 57
       Caption = 'Read'
@@ -138,19 +138,34 @@ object Form1: TForm1
     end
     object ConnectionEstablishedBtn: TButton
       Left = 32
-      Top = 97
+      Top = 167
       Width = 153
       Height = 57
       Caption = 'Connection Established?'
       TabOrder = 5
       OnClick = ButtonClick
     end
+    object ReadOptions: TRadioGroup
+      Left = 224
+      Top = 336
+      Width = 489
+      Height = 57
+      Caption = 'ReadOptions'
+      Columns = 4
+      ItemIndex = 0
+      Items.Strings = (
+        'Product ID'
+        'Hardware Version'
+        'Version Date'
+        'Software Version')
+      TabOrder = 6
+    end
   end
   object mShutDownTimer: TTimer
     Enabled = False
     Interval = 10
     OnTimer = mShutDownTimerTimer
-    Left = 416
-    Top = 328
+    Left = 456
+    Top = 272
   end
 end

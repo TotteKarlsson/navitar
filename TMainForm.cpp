@@ -4,7 +4,7 @@
 #include "mtkVCLUtils.h"
 #include "TMainForm.h"
 #include "mtkLogger.h"
-#include "navitar/navserAPI.h"
+#include "navitar/navusbAPI.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TIntegerLabeledEdit"
@@ -80,26 +80,36 @@ void __fastcall TForm1::ButtonClick(TObject *Sender)
     if(b == FindConnectedDevicesBtn)
     {
         //Check for connected devices
-//        int res = SerUSBFindUSBinterfaces();
-//        Log(lInfo) <<"Result from USBFindUSBinterfaces:" << res;
+        int res = USBFindUSBinterfaces();
+        Log(lInfo) <<"Result from USBFindUSBinterfaces:" << res;
     }
     else if(b == ConnectBtn)
     {
-        mHandle = SerConnectionConnect(1, DEF_MOTOR_CONTROLLER);
+        mHandle = USBConnectionConnect(1, DEF_MOTOR_CONTROLLER);
         Log(lInfo) <<"Result from USBConnectionConnect:" << mHandle;
         Log(lInfo) <<"Handle is:" << mHandle;
+    }
+    else if(b == ConnectionEstablishedBtn)
+    {
+        int res = USBConnectionEstablished(mHandle, DEF_MOTOR_CONTROLLER);
+        Log(lInfo) <<"Result from USBConnectionEstablished:" << res;
     }
     else if(b == ReadBtn)
     {
     	long val = 0;
-        int res = SerConnectionRead(mHandle, REG_SYS_PRODUCTID, &val);
+        //Check what to read
+        unsigned char readOption;
+        switch(ReadOptions->ItemIndex)
+        {
+        	case 0: readOption = REG_SYS_PRODUCTID;          break;
+        	case 1:	readOption = REG_SYS_VERSIONHW;          break;
+        	case 2:	readOption = REG_SYS_VERSIONDATE; 		 break;
+        	case 3:	readOption = REG_SYS_VERSIONSW;          break;
+
+        }
+        int res = USBConnectionRead(mHandle, readOption, &val);
         Log(lInfo) <<"Result from USBConnectionRead:" << res;
         Log(lInfo) <<"Read result:" << val;
-    }
-    else if(b == ConnectionEstablishedBtn)
-    {
-//        int res = USBConnectionEstablished(mHandle, DEF_MOTOR_CONTROLLER);
-//        Log(lInfo) <<"Result from USBConnectionEstablished:" << res;
     }
 
 

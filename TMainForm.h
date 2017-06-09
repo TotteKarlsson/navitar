@@ -28,6 +28,7 @@ __published:	// IDE-managed Components
 	TSplitter *Splitter1;
 	TButton *ReadBtn;
 	TButton *ConnectionEstablishedBtn;
+	TRadioGroup *ReadOptions;
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall mShutDownTimerTimer(TObject *Sender);
