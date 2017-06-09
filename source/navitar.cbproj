@@ -105,6 +105,10 @@
             <BuildOrder>3</BuildOrder>
             <IgnorePath>true</IgnorePath>
         </LibFiles>
+        <CppCompile Include="atNavitarMotor.cpp">
+            <DependentOn>atNavitarMotor.h</DependentOn>
+            <BuildOrder>5</BuildOrder>
+        </CppCompile>
         <CppCompile Include="atNavitarMotorControl.cpp">
             <DependentOn>atNavitarMotorControl.h</DependentOn>
             <BuildOrder>4</BuildOrder>

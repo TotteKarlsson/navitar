@@ -1,4 +1,4 @@
- * Licensing and Distribution Terms for the ArrayBot API
+ * Licensing and Distribution Terms for the atNavitar
  * Copyright (C) 2016
  *   Totte Karlsson, Forrest Collman & Stephen Smith - Allen Institute for Brain Science
  *

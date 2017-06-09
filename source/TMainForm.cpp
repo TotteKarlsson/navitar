@@ -94,6 +94,10 @@ void __fastcall TMainForm::ButtonClick(TObject *Sender)
             }
         }
     }
+    else if (b == HomeZoomBtn)
+    {
+    	mNavitar.getZoom().home();
+    }
 }
 
 void  TMainForm::onNavitarConnected()

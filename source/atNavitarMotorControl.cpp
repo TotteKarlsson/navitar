@@ -10,13 +10,25 @@ using Poco::DateTime;
 //---------------------------------------------------------------------------
 NavitarMotorControl::NavitarMotorControl()
 :
-mHandle(0)
+mHandle(0),
+mZoom(*this, 1),
+mFocus(*this,2)
 {
 }
 
 //---------------------------------------------------------------------------
 NavitarMotorControl::~NavitarMotorControl()
 {
+}
+
+NavitarMotor& NavitarMotorControl::getZoom()
+{
+	return mZoom;
+}
+
+NavitarMotor& NavitarMotorControl::getFocus()
+{
+	return mFocus;
 }
 
 //---------------------------------------------------------------------------
@@ -59,19 +71,17 @@ bool NavitarMotorControl::isConnected()
 }
 
 //---------------------------------------------------------------------------
-bool NavitarMotorControl::home()
+int	NavitarMotorControl::write(const int& reg, long value)
 {
-	return false;
+	return USBConnectionWrite(mHandle, reg, &value);
 }
 
-//        	case 2:	readOption = REG_SYS_VERSIONDATE; 		 break;
-//        	case 3:	readOption = REG_SYS_VERSIONSW;          break;
-//
-//        }
-//        int res = USBConnectionRead(mHandle, readOption, &val);
-//        Log(lInfo) <<"Result from USBConnectionRead:" << res;
-//        Log(lInfo) <<"Read result:" << val;
-//    }
+//---------------------------------------------------------------------------
+bool NavitarMotorControl::home()
+{
+	mZoom.home();
+    mFocus.home();
+}
 
 //---------------------------------------------------------------------------
 string NavitarMotorControl::getProductID()
@@ -85,7 +95,7 @@ string NavitarMotorControl::getProductID()
     {
     	return "Motor Controller";
     }
-    else if(val == 0x4001)
+    else if(val == 0x4000)
     {
     	return "BrightLight Controller";
     }
@@ -96,25 +106,8 @@ string NavitarMotorControl::getDriverSoftwareBuildDate()
 {
 	long val;
     int res = USBConnectionRead(mHandle, REG_SYS_VERSIONDATE, &val);
-    Log(lDebug) <<"Result from USBConnectionRead:" << res;
-    Log(lDebug) <<"Read result:" << val;
-
-//	regValue = MyController.Read(Controller.regVersionDate);
-//                        major = (int)(((uint)regValue & 0xff000000) >> 24);
-//                        minor = (int)(((uint)regValue & 0xff0000) >> 16);
-//                        rev = (int)(((uint)regValue & 0xff00) >> 8);
-//                        bug = (int)((uint)regValue & 0xff);
-//                        DateTime date = new DateTime(rev + 2000, major, minor);
-//                        this.labelDateOfManufacture.Text = date.ToShortDateString();
-
-	int major 	= (int) (((uint) val & 0xff000000) >> 24);
-    int minor	= (int) (((uint) val & 0xff0000) >> 16);
-    int rev 	= (int) (((uint) val & 0xff00) >> 8);
-    int bug 	= (int) (( uint) val & 0xff);
-
-    DateTime dt(rev + 2000, major, minor);
-
-	return Poco::DateTimeFormatter::format(dt, "%n/%f/%Y");
+    Log(lDebug) <<"Result and value from USBConnectionRead:" << res<<", "<< val;
+	return parseDate(val);
 }
 
 //---------------------------------------------------------------------------
@@ -122,10 +115,22 @@ string NavitarMotorControl::getHardwareVersion()
 {
 	long val;
     int res = USBConnectionRead(mHandle, REG_SYS_VERSIONHW, &val);
-    Log(lDebug) <<"Result from USBConnectionRead:" << res;
-    Log(lDebug) <<"Read result:" << val;
+    Log(lDebug) <<"Result and value from USBConnectionRead:" << res<<", "<< val;
+	return parseVersion(val);
+}
 
+//---------------------------------------------------------------------------
+string NavitarMotorControl::getSoftwareVersion()
+{
+	long val;
+    int res = USBConnectionRead(mHandle, REG_SYS_VERSIONSW, &val);
+    Log(lDebug) <<"Result and value from USBConnectionRead:" << res<<", "<< val;
+	return parseVersion(val);
+}
 
+//---------------------------------------------------------------------------
+string NavitarMotorControl::parseVersion(long val)
+{
 	int major 	= (int) (((uint) val & 0xff000000) >> 24);
     int minor	= (int) (((uint) val & 0xff0000) >> 16);
     int rev 	= (int) (((uint) val & 0xff00) >> 8);
@@ -137,21 +142,15 @@ string NavitarMotorControl::getHardwareVersion()
 }
 
 //---------------------------------------------------------------------------
-string NavitarMotorControl::getSoftwareVersion()
+string NavitarMotorControl::parseDate(long val)
 {
-	long val;
-    int res = USBConnectionRead(mHandle, REG_SYS_VERSIONSW, &val);
-    Log(lDebug) <<"Result from USBConnectionRead:" << res;
-    Log(lDebug) <<"Read result:" << val;
-
 	int major 	= (int) (((uint) val & 0xff000000) >> 24);
     int minor	= (int) (((uint) val & 0xff0000) >> 16);
     int rev 	= (int) (((uint) val & 0xff00) >> 8);
     int bug 	= (int) (( uint) val & 0xff);
 
-	stringstream str;
-    str<<major<<"."<<minor<<"."<<rev<<"."<<bug;
-	return str.str();
+    DateTime dt(rev + 2000, major, minor);
+	return Poco::DateTimeFormatter::format(dt, "%n/%f/%Y");
 }
 
 
