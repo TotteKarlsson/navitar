@@ -101,6 +101,14 @@
         <TASM_Debugging>None</TASM_Debugging>
     </PropertyGroup>
     <ItemGroup>
+        <LibFiles Include="P:\libs\atapi\thirdparty\navitar\old\navserAPI_Borland.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>3</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <CppCompile Include="atNavitarMotorControl.cpp">
+            <DependentOn>atNavitarMotorControl.h</DependentOn>
+            <BuildOrder>4</BuildOrder>
+        </CppCompile>
         <CppCompile Include="navitar.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
@@ -108,15 +116,11 @@
             <BuildOrder>1</BuildOrder>
         </PCHCompile>
         <CppCompile Include="TMainForm.cpp">
-            <Form>Form1</Form>
+            <Form>MainForm</Form>
             <FormType>dfm</FormType>
             <DependentOn>TMainForm.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
-        <LibFiles Include="P:\libs\atapi\thirdparty\navitar\old\navserAPI_Borland.lib" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>3</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </LibFiles>
         <FormResources Include="TMainForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

@@ -9,39 +9,48 @@
 #include <Vcl.ExtCtrls.hpp>
 #include "mtkLogFileReader.h"
 #include "TIntegerLabeledEdit.h"
+#include "atNavitarMotorControl.h"
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+
+class TMainForm : public TForm
 {
 __published:	// IDE-managed Components
 	TMemo *mInfoMemo;
 	TTimer *mShutDownTimer;
-	TButton *FindConnectedDevicesBtn;
 	TButton *ConnectBtn;
-	TIntegerLabeledEdit *ProductID;
-	TIntegerLabeledEdit *DeviceID;
-	TGroupBox *GroupBox1;
 	TGroupBox *Zoom;
 	TButton *Button3;
 	TButton *Button4;
 	TIntegerLabeledEdit *CurrentPosition;
 	TPanel *TopPanel;
 	TSplitter *Splitter1;
-	TButton *ReadBtn;
-	TButton *ConnectionEstablishedBtn;
-	TRadioGroup *ReadOptions;
+	TGroupBox *ControllerInfoGB;
+	TLabel *Label1;
+	TLabel *Label2;
+	TLabel *Label3;
+	TLabel *Label4;
+	TLabel *ProdIdLbl;
+	TLabel *HWVerLbl;
+	TLabel *SWVerLbl;
+	TLabel *FirmWareDateLbl;
+	TButton *Button1;
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall mShutDownTimerTimer(TObject *Sender);
 	void __fastcall ButtonClick(TObject *Sender);
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall Button1Click(TObject *Sender);
 
 private:	// User declarations
         LogFileReader                           mLogFileReader;
         void __fastcall                         logMsg();
-		int										mHandle;
+        NavitarMotorControl						mNavitar;
+        void									onNavitarConnected();
+        void									onNavitarDisconnected();
 
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TMainForm(TComponent* Owner);
 };
 
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TMainForm *MainForm;
 #endif

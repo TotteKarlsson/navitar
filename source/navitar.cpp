@@ -9,7 +9,7 @@
 #include "mtkWin32Utils.h"
 #include "mtkLogger.h"
 //---------------------------------------------------------------------------
-USEFORM("TMainForm.cpp", Form1);
+USEFORM("TMainForm.cpp", MainForm);
 //---------------------------------------------------------------------------
 using std::string;
 using namespace mtk;
@@ -27,7 +27,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->MainFormOnTaskBar = true;
 		setupLogging();
 		TStyleManager::TrySetStyle("Iceberg Classico");
-		Application->CreateForm(__classid(TForm1), &Form1);
+		Application->CreateForm(__classid(TMainForm), &MainForm);
 		Application->Run();
 	}
 	catch (Exception &exception)

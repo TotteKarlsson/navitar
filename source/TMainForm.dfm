@@ -1,4 +1,4 @@
-object Form1: TForm1
+object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'Navitar Control'
@@ -13,7 +13,11 @@ object Form1: TForm1
   KeyPreview = True
   OldCreateOrder = False
   OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
+  DesignSize = (
+    962
+    645)
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
@@ -44,61 +48,22 @@ object Form1: TForm1
     Height = 423
     Align = alTop
     TabOrder = 1
-    object FindConnectedDevicesBtn: TButton
-      Left = 32
-      Top = 32
-      Width = 153
-      Height = 57
-      Caption = 'Find connected devices'
-      TabOrder = 0
-      OnClick = ButtonClick
-    end
     object ConnectBtn: TButton
       Left = 32
-      Top = 104
+      Top = 36
       Width = 153
       Height = 57
       Caption = 'Connect'
-      TabOrder = 1
+      TabOrder = 0
       OnClick = ButtonClick
-    end
-    object GroupBox1: TGroupBox
-      Left = 224
-      Top = 32
-      Width = 321
-      Height = 97
-      Caption = 'Parameters'
-      TabOrder = 2
-      object ProductID: TIntegerLabeledEdit
-        Left = 120
-        Top = 36
-        Width = 121
-        Height = 21
-        EditLabel.Width = 51
-        EditLabel.Height = 13
-        EditLabel.Caption = 'Product ID'
-        TabOrder = 0
-        Text = '0'
-      end
-      object DeviceID: TIntegerLabeledEdit
-        Left = 24
-        Top = 36
-        Width = 65
-        Height = 21
-        EditLabel.Width = 46
-        EditLabel.Height = 13
-        EditLabel.Caption = 'Device ID'
-        TabOrder = 1
-        Text = '0'
-      end
     end
     object Zoom: TGroupBox
       Left = 224
-      Top = 160
-      Width = 409
+      Top = 32
+      Width = 361
       Height = 153
       Caption = 'Zoom'
-      TabOrder = 3
+      TabOrder = 1
       object Button3: TButton
         Left = 14
         Top = 24
@@ -127,39 +92,80 @@ object Form1: TForm1
         Text = '0'
       end
     end
-    object ReadBtn: TButton
-      Left = 32
-      Top = 336
-      Width = 153
-      Height = 57
-      Caption = 'Read'
-      TabOrder = 4
-      OnClick = ButtonClick
+    object ControllerInfoGB: TGroupBox
+      Left = 704
+      Top = 36
+      Width = 225
+      Height = 149
+      Caption = 'Controller Info'
+      TabOrder = 2
+      object Label1: TLabel
+        Left = 16
+        Top = 24
+        Width = 55
+        Height = 13
+        Caption = 'Product ID:'
+      end
+      object Label2: TLabel
+        Left = 16
+        Top = 45
+        Width = 89
+        Height = 13
+        Caption = 'Hardware Version:'
+      end
+      object Label3: TLabel
+        Left = 16
+        Top = 66
+        Width = 82
+        Height = 13
+        Caption = 'Software Version'
+      end
+      object Label4: TLabel
+        Left = 16
+        Top = 85
+        Width = 74
+        Height = 13
+        Caption = 'Firmware Date:'
+      end
+      object ProdIdLbl: TLabel
+        Left = 120
+        Top = 22
+        Width = 18
+        Height = 13
+        Caption = 'N/A'
+      end
+      object HWVerLbl: TLabel
+        Left = 120
+        Top = 43
+        Width = 18
+        Height = 13
+        Caption = 'N/A'
+      end
+      object SWVerLbl: TLabel
+        Left = 120
+        Top = 64
+        Width = 18
+        Height = 13
+        Caption = 'N/A'
+      end
+      object FirmWareDateLbl: TLabel
+        Left = 120
+        Top = 85
+        Width = 18
+        Height = 13
+        Caption = 'N/A'
+      end
     end
-    object ConnectionEstablishedBtn: TButton
-      Left = 32
-      Top = 167
-      Width = 153
-      Height = 57
-      Caption = 'Connection Established?'
-      TabOrder = 5
-      OnClick = ButtonClick
-    end
-    object ReadOptions: TRadioGroup
-      Left = 224
-      Top = 336
-      Width = 489
-      Height = 57
-      Caption = 'ReadOptions'
-      Columns = 4
-      ItemIndex = 0
-      Items.Strings = (
-        'Product ID'
-        'Hardware Version'
-        'Version Date'
-        'Software Version')
-      TabOrder = 6
-    end
+  end
+  object Button1: TButton
+    Left = 854
+    Top = 448
+    Width = 75
+    Height = 25
+    Anchors = [akTop, akRight]
+    Caption = 'Clear'
+    TabOrder = 2
+    OnClick = Button1Click
   end
   object mShutDownTimer: TTimer
     Enabled = False
