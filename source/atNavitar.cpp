@@ -14,9 +14,9 @@ USEFORM("TMainForm.cpp", MainForm);
 using std::string;
 using namespace mtk;
 
-extern string       gLogFileLocation            = "";
-extern string       gLogFileName                = "navitar.log";
-extern string 		gAppDataFolder 				= ".";
+string      gLogFileName                = "atNavitar.log";
+string		gAppName					= "atNavitar";
+string		gAppDataFolder 				= joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), gAppName);;
 void setupLogging();
 
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
@@ -52,15 +52,13 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 void setupLogging()
 {
 	//Get Application folder
-	string fldr =  ".";
+	string fldr =  gAppDataFolder;
 	if(!folderExists(fldr))
 	{
 		createFolder(fldr);
 	}
 
-	gLogFileLocation = fldr;
-
-	string fullLogFileName(joinPath(gLogFileLocation, gLogFileName));
+	string fullLogFileName(joinPath(fldr, gLogFileName));
 	clearFile(fullLogFileName);
 	mtk::gLogger.logToFile(fullLogFileName);
     mtk::gLogger.setLogLevel(lDebug5);

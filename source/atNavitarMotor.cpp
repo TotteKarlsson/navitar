@@ -6,15 +6,45 @@
 
 using namespace mtk;
 
-
-
-
 NavitarMotor::NavitarMotor(NavitarMotorControl& mc, int ID)
 :
 mMotorController(mc),
-mMotorID(ID)
+mMotorID(ID),
+mHandle(0)
 {
+}
 
+bool NavitarMotor::connect()
+{
+    Log(lDebug) <<"Connecting motor with ID: "<<mMotorID;
+
+	mHandle = USBConnectionConnect(mMotorID, DEF_MOTOR_CONTROLLER);
+
+    Log(lDebug) <<"Handle returned:" << mHandle;
+
+
+    if(mHandle && USBConnectionEstablished(mHandle, DEF_MOTOR_CONTROLLER))
+    {
+        Log(lInfo) <<"Connection established to Navitar Motor controller with ID: "<<mMotorID;
+        return true;
+    }
+    else
+    {
+        Log(lInfo) <<"Connection FAILED to Navitar Motor controller with ID: "<<mMotorID;
+        return false;
+    }
+}
+
+bool NavitarMotor::disConnect()
+{
+	Log(lInfo) << "Disconnecting motor with ID:" << mMotorID;
+	if(mHandle)
+	{
+		USBConnectionDisconnect(mHandle);
+    }
+
+    mHandle = 0;
+    return true;
 }
 
 void NavitarMotor::home()

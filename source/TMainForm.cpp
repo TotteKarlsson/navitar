@@ -6,12 +6,12 @@
 #include "mtkLogger.h"
 #include "navitar/navusbAPI.h"
 #include "mtkVCLUtils.h"
-
-
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TIntegerLabeledEdit"
 #pragma resource "*.dfm"
+//---------------------------------------------------------------------------
+
 TMainForm *MainForm;
 
 extern string gLogFileName;
@@ -26,7 +26,7 @@ using namespace mtk;
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
 	: TForm(Owner),
-    mLogFileReader(gLogFileName, &logMsg)
+    mLogFileReader(joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), "atNavitar", gLogFileName), &logMsg)
 {
    	mLogFileReader.start(true);
 }
@@ -98,6 +98,10 @@ void __fastcall TMainForm::ButtonClick(TObject *Sender)
     {
     	mNavitar.getZoom().home();
     }
+    else if (b == LimitBtn)
+    {
+    	mNavitar.getZoom().limit();
+    }
 }
 
 void  TMainForm::onNavitarConnected()
@@ -107,9 +111,8 @@ void  TMainForm::onNavitarConnected()
 	HWVerLbl->Caption           = vclstr(mNavitar.getHardwareVersion());
    	SWVerLbl->Caption           = vclstr(mNavitar.getSoftwareVersion());
     FirmWareDateLbl->Caption   	= vclstr(mNavitar.getDriverSoftwareBuildDate());
-
-
     enableDisableGroupBox(ControllerInfoGB, true);
+    enableDisableGroupBox(ZoomGB, true);
 }
 
 void  TMainForm::onNavitarDisconnected()
@@ -122,12 +125,14 @@ void  TMainForm::onNavitarDisconnected()
     FirmWareDateLbl->Caption   	= "N/A";
 
     enableDisableGroupBox(ControllerInfoGB, false);
+    enableDisableGroupBox(ZoomGB, false);
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
     enableDisableGroupBox(ControllerInfoGB, false);
+    enableDisableGroupBox(ZoomGB, false);
 }
 
 //---------------------------------------------------------------------------
@@ -135,5 +140,6 @@ void __fastcall TMainForm::Button1Click(TObject *Sender)
 {
 	mInfoMemo->Clear();
 }
+
 
 

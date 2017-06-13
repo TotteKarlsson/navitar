@@ -19,9 +19,9 @@ __published:	// IDE-managed Components
 	TMemo *mInfoMemo;
 	TTimer *mShutDownTimer;
 	TButton *ConnectBtn;
-	TGroupBox *Zoom;
+	TGroupBox *ZoomGB;
 	TButton *HomeZoomBtn;
-	TButton *Button4;
+	TButton *LimitBtn;
 	TIntegerLabeledEdit *CurrentPosition;
 	TPanel *TopPanel;
 	TSplitter *Splitter1;

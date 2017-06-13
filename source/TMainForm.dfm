@@ -1,7 +1,7 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
-  Caption = 'Navitar Control'
+  Caption = 'AT Navitar Control'
   ClientHeight = 665
   ClientWidth = 962
   Color = clBtnFace
@@ -44,12 +44,12 @@ object MainForm: TMainForm
       TabOrder = 0
       OnClick = ButtonClick
     end
-    object Zoom: TGroupBox
+    object ZoomGB: TGroupBox
       Left = 200
       Top = 36
       Width = 361
       Height = 341
-      Caption = 'Zoom'
+      Caption = 'ZoomGB'
       TabOrder = 1
       object HomeZoomBtn: TButton
         Left = 22
@@ -60,13 +60,14 @@ object MainForm: TMainForm
         TabOrder = 0
         OnClick = ButtonClick
       end
-      object Button4: TButton
+      object LimitBtn: TButton
         Left = 22
         Top = 17
         Width = 91
         Height = 41
         Caption = 'Limit'
         TabOrder = 1
+        OnClick = ButtonClick
       end
       object CurrentPosition: TIntegerLabeledEdit
         Left = 176
@@ -96,8 +97,6 @@ object MainForm: TMainForm
     Height = 245
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = 56
-    ExplicitTop = 408
     DesignSize = (
       962
       245)
@@ -118,7 +117,6 @@ object MainForm: TMainForm
       Lines.Strings = (
         'Memo1')
       TabOrder = 0
-      ExplicitWidth = 728
     end
     object InfoPanel: TPanel
       Left = 720
@@ -135,8 +133,6 @@ object MainForm: TMainForm
         Align = alClient
         Caption = 'Controller Info'
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitWidth = 181
         object Label1: TLabel
           Left = 16
           Top = 24

@@ -5,8 +5,6 @@
 #include "atNavitarMotor.h"
 //---------------------------------------------------------------------------
 
-
-
 //!The NavitarMotorControl class is a Wrapper class for the Navitar USB motor controller API
 class AT_CORE NavitarMotorControl //: public ATObject
 {

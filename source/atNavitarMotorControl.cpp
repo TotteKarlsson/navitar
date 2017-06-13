@@ -2,8 +2,12 @@
 #include "atNavitarMotorControl.h"
 #include "mtkLogger.h"
 #include "poco/DateTime.h"
-//---------------------------------------------------------------------------
 
+#include "mtkUtils.h"
+
+using namespace mtk;
+
+//---------------------------------------------------------------------------
 using namespace mtk;
 using Poco::DateTime;
 
@@ -11,8 +15,8 @@ using Poco::DateTime;
 NavitarMotorControl::NavitarMotorControl()
 :
 mHandle(0),
-mZoom(*this, 1),
-mFocus(*this,2)
+mZoom( *this,2),
+mFocus(*this,1)
 {
 }
 
@@ -34,6 +38,7 @@ NavitarMotor& NavitarMotorControl::getFocus()
 //---------------------------------------------------------------------------
 bool NavitarMotorControl::connect()
 {
+
     //Check for connected devices
     int res = USBFindUSBinterfaces();
     if(res != 1)
@@ -42,38 +47,51 @@ bool NavitarMotorControl::connect()
         return false;
     }
 
-    mHandle = USBConnectionConnect(1, DEF_MOTOR_CONTROLLER);
-    Log(lDebug) <<"Result from USBConnectionConnect:" << mHandle;
-    Log(lDebug) <<"Handle is:" << mHandle;
-
-    if(USBConnectionEstablished(mHandle, DEF_MOTOR_CONTROLLER))
+    //Move on and connect motors
+    if(!mZoom.connect())
     {
-        Log(lInfo) <<"Connection established to Navitar Motor controller";
-        return true;
+    	Log(lError) << "Failed to connect to zoom motor";
     }
     else
     {
-        Log(lInfo) <<"Connection FAILED to Navitar Motor controller";
-        return false;
+    	Log(lInfo) << "Motor 1 is connected";
+	    mHandle = mZoom.getHandle();
     }
+
+    if(!mFocus.connect())
+    {
+    	Log(lError) << "Failed to connect to Focus motor";
+    }
+    else
+    {
+    	Log(lInfo) << "Motor 2 is connected";
+    	mHandle = mZoom.getHandle();
+    }
+	return true;
 }
 
 //---------------------------------------------------------------------------
 bool NavitarMotorControl::disConnect()
 {
-    return USBConnectionDisconnect(mHandle);
+	mZoom.disConnect();
+    mFocus.disConnect();
+    return true;
 }
 
 //---------------------------------------------------------------------------
 bool NavitarMotorControl::isConnected()
 {
-	return USBConnectionEstablished(mHandle, DEF_MOTOR_CONTROLLER);
+	return false;
 }
 
 //---------------------------------------------------------------------------
 int	NavitarMotorControl::write(const int& reg, long value)
 {
-	return USBConnectionWrite(mHandle, reg, &value);
+	if(mHandle)
+    {
+		int res = USBConnectionWrite(mHandle, reg, &value);
+    }
+    return 0;
 }
 
 //---------------------------------------------------------------------------
@@ -81,14 +99,20 @@ bool NavitarMotorControl::home()
 {
 	mZoom.home();
     mFocus.home();
+    return true;
 }
 
 //---------------------------------------------------------------------------
 string NavitarMotorControl::getProductID()
 {
+    if(!mHandle)
+    {
+    	return "UNDEFINED PRODUCT ID";
+    }
+
 	long val;
     int res = USBConnectionRead(mHandle, REG_SYS_PRODUCTID, &val);
-    Log(lDebug) <<"Result from USBConnectionRead:" << res;
+    Log(lDebug) <<"Reading Product ID:" << res;
     Log(lDebug) <<"Read result:" << val;
 
     if(val == 0x4001)
@@ -99,23 +123,37 @@ string NavitarMotorControl::getProductID()
     {
     	return "BrightLight Controller";
     }
+    else
+    {
+    	return "UNDEFINED";
+    }
 }
 
 //---------------------------------------------------------------------------
 string NavitarMotorControl::getDriverSoftwareBuildDate()
 {
+    if(!mHandle)
+    {
+    	return "UNDEFINED SW BUILD DATE";
+    }
+
 	long val;
     int res = USBConnectionRead(mHandle, REG_SYS_VERSIONDATE, &val);
-    Log(lDebug) <<"Result and value from USBConnectionRead:" << res<<", "<< val;
+    Log(lDebug) <<"Reading version date:" << res<<", "<< val;
 	return parseDate(val);
 }
 
 //---------------------------------------------------------------------------
 string NavitarMotorControl::getHardwareVersion()
 {
+    if(!mHandle)
+    {
+    	return "UNDEFINED HW VERSION";
+    }
+
 	long val;
     int res = USBConnectionRead(mHandle, REG_SYS_VERSIONHW, &val);
-    Log(lDebug) <<"Result and value from USBConnectionRead:" << res<<", "<< val;
+    Log(lDebug) <<"Reading hardware version:" << res<<", "<< val;
 	return parseVersion(val);
 }
 
