@@ -82,7 +82,7 @@ void setupLogging()
 //#pragma comment(lib, "atCore.lib")
 //#pragma comment(lib, "atResources.lib")
 #pragma comment(lib, "poco_foundation-static.lib")
-#pragma comment(lib, "navitarUSBAPI_Borland.lib")
+#pragma comment(lib, "navusbAPI_B1.lib")
 
 
 #pragma comment(lib, "VCLCommon.bpi")
