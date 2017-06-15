@@ -6,7 +6,7 @@
 //---------------------------------------------------------------------------
 
 //!The NavitarMotorControl class is a Wrapper class for the Navitar USB motor controller API
-class AT_CORE NavitarMotorControl //: public ATObject
+class NavitarMotorControl //: public ATObject
 {
    	friend NavitarMotor;
 	public:
@@ -25,6 +25,7 @@ class AT_CORE NavitarMotorControl //: public ATObject
 		string				            getDriverSoftwareBuildDate();
         string                          getHardwareVersion();
         string                          getSoftwareVersion();
+        int								getHandle(){return mHandle;}
 
 	protected:
     	int					            mHandle;

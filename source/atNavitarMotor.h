@@ -20,7 +20,7 @@ class NavitarMotor //://: public ATObject
 
         						//!Connect to a motor
 		bool					disConnect();
-        int						getHandle(){return mHandle;}
+ //       int						getHandle(){return mHandle;}
 
     protected:
 		NavitarMotorControl& 	mMotorController;
@@ -28,7 +28,7 @@ class NavitarMotor //://: public ATObject
 
         						//!the handle is returned when connecting and used for API calls
                                 //!using this motor
-        int						mHandle;
+//        int						mHandle;
 
 };
 

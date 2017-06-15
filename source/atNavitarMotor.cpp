@@ -9,21 +9,15 @@ using namespace mtk;
 NavitarMotor::NavitarMotor(NavitarMotorControl& mc, int ID)
 :
 mMotorController(mc),
-mMotorID(ID),
-mHandle(0)
+mMotorID(ID)//,
+//mHandle(0)
 {
 }
 
 bool NavitarMotor::connect()
 {
-    Log(lDebug) <<"Connecting motor with ID: "<<mMotorID;
-
-	mHandle = USBConnectionConnect(mMotorID, DEF_MOTOR_CONTROLLER);
-
-    Log(lDebug) <<"Handle returned:" << mHandle;
-
-
-    if(mHandle && USBConnectionEstablished(mHandle, DEF_MOTOR_CONTROLLER))
+//    Log(lDebug) <<"Handle returned:" << mHandle;
+    if(mMotorController.getHandle() && USBConnectionEstablished(mMotorController.getHandle(), DEF_MOTOR_CONTROLLER))
     {
         Log(lInfo) <<"Connection established to Navitar Motor controller with ID: "<<mMotorID;
         return true;
@@ -38,12 +32,12 @@ bool NavitarMotor::connect()
 bool NavitarMotor::disConnect()
 {
 	Log(lInfo) << "Disconnecting motor with ID:" << mMotorID;
-	if(mHandle)
+	if(mMotorController.getHandle())
 	{
-		USBConnectionDisconnect(mHandle);
+		USBConnectionDisconnect(mMotorController.getHandle());
     }
 
-    mHandle = 0;
+//    mMotorController.getHandle() = 0;
     return true;
 }
 
