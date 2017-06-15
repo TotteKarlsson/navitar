@@ -97,10 +97,12 @@ void __fastcall TMainForm::ButtonClick(TObject *Sender)
     else if (b == HomeZoomBtn)
     {
     	mNavitar.getZoom().home();
+        mNavitar.getFocus().home();
     }
     else if (b == LimitBtn)
     {
     	mNavitar.getZoom().limit();
+        mNavitar.getFocus().limit();
     }
 }
 

@@ -10,6 +10,7 @@
 #include "mtkLogger.h"
 //---------------------------------------------------------------------------
 USEFORM("TMainForm.cpp", MainForm);
+USEFORM("frames\TNavitarMotorFrame.cpp", Frame1); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 using std::string;
 using namespace mtk;
