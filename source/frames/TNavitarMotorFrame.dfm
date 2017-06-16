@@ -53,7 +53,7 @@ object NavitarMotorFrame: TNavitarMotorFrame
       ParentFont = False
       TabOrder = 0
       Text = '0'
-      OnExit = MotorPositionExit
+      OnKeyDown = MotorPositionKeyDown
     end
     object PositionTB: TTrackBar
       Left = 103

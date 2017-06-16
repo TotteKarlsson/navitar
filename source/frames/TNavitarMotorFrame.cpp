@@ -84,10 +84,14 @@ void __fastcall TNavitarMotorFrame::MotorPositionTimerTimer(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TNavitarMotorFrame::MotorPositionExit(TObject *Sender)
+void __fastcall TNavitarMotorFrame::MotorPositionKeyDown(TObject *Sender, WORD &Key,
+          TShiftState Shift)
 {
-	Log(lInfo) << "Setting new position to: "<<MotorPosition->getValue();
-    mMotor->setPosition(MotorPosition->getValue());
+    if(Key == VK_RETURN)
+    {
+		Log(lInfo) << "Setting new position to: "<<MotorPosition->getValue();
+	    mMotor->setPosition(MotorPosition->getValue());
+    }
 }
 
 
