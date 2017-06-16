@@ -32,7 +32,6 @@ void TNavitarMotorFrame::populate(NavitarMotor& m)
 //---------------------------------------------------------------------------
 void __fastcall TNavitarMotorFrame::ButtonClick(TObject *Sender)
 {
-
 	if(!mMotor)
     {
     	Log(lError) << "Motor is NULL in ButtonClick";
@@ -43,10 +42,12 @@ void __fastcall TNavitarMotorFrame::ButtonClick(TObject *Sender)
 
     if (b == HomeZoomBtn)
     {
+    	Log(lError) << "Driving motor " <<mMotor->getLabel()<<" to Home";
     	mMotor->home();
     }
     else if (b == LimitBtn)
     {
+    	Log(lInfo) << "Driving motor " <<mMotor->getLabel()<<" to Limit";
     	mMotor->limit();
     }
 }

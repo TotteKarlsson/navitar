@@ -18,6 +18,7 @@ object NavitarMotorFrame: TNavitarMotorFrame
       Height = 41
       Caption = 'Home'
       TabOrder = 0
+      OnClick = ButtonClick
     end
     object LimitBtn: TButton
       Left = 22
