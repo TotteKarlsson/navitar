@@ -29,9 +29,9 @@ void TNavitarMotorFrame::populate(NavitarMotor& m)
     enableDisableGroupBox(MotorGB, true);
 }
 
-//---------------------------------------------------------------------------
-void __fastcall TNavitarMotorFrame::ButtonClick(TObject *Sender)
+void __fastcall TNavitarMotorFrame::FrameBtnClick(TObject *Sender)
 {
+
 	if(!mMotor)
     {
     	Log(lError) << "Motor is NULL in ButtonClick";
@@ -40,7 +40,7 @@ void __fastcall TNavitarMotorFrame::ButtonClick(TObject *Sender)
 
 	TButton* b = dynamic_cast<TButton*>(Sender);
 
-    if (b == HomeZoomBtn)
+    if (b == HomeBtn)
     {
     	Log(lError) << "Driving motor " <<mMotor->getLabel()<<" to Home";
     	mMotor->home();
@@ -50,6 +50,7 @@ void __fastcall TNavitarMotorFrame::ButtonClick(TObject *Sender)
     	Log(lInfo) << "Driving motor " <<mMotor->getLabel()<<" to Limit";
     	mMotor->limit();
     }
+
 }
 
 
