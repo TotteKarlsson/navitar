@@ -7,6 +7,7 @@
 #include "TIntegerLabeledEdit.h"
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
+#include "TIntLabel.h"
 //---------------------------------------------------------------------------
 
 
@@ -21,6 +22,8 @@ class TNavitarMotorFrame : public TFrame
         TTimer *MotorPositionTimer;
 	TButton *HomeBtn;
 	TButton *LimitBtn;
+	TIntLabel *MaxPosLabel;
+	TLabel *Label1;
 
 	void __fastcall FrameBtnClick(TObject *Sender);
 	void __fastcall MotorPositionTimerTimer(TObject *Sender);

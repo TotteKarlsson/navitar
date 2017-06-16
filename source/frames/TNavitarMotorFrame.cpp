@@ -6,6 +6,7 @@
 #include "mtkVCLUtils.h"
 #pragma package(smart_init)
 #pragma link "TIntegerLabeledEdit"
+#pragma link "TIntLabel"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 
@@ -28,6 +29,9 @@ void TNavitarMotorFrame::populate(NavitarMotor& m)
 	MotorGB->Caption = vclstr(mMotor->getLabel());
     enableDisableGroupBox(MotorGB, true);
     MotorPositionTimer->Enabled = true;
+
+    //Read motors max position
+    MaxPosLabel->setValue(mMotor->getMaxPosition());
 }
 
 //---------------------------------------------------------------------------
