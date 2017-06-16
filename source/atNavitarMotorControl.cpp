@@ -91,6 +91,18 @@ int	NavitarMotorControl::write(const int& reg, long value)
 	if(mHandle)
     {
 		int res = USBConnectionWrite(mHandle, reg, &value);
+        return res;
+    }
+    return 0;
+}
+
+//---------------------------------------------------------------------------
+int	NavitarMotorControl::read(const int& reg, long& value)
+{
+	if(mHandle)
+    {
+		int res = USBConnectionRead(mHandle, reg, &value);
+        return res;
     }
     return 0;
 }

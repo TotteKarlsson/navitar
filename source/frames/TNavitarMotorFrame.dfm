@@ -11,7 +11,7 @@ object NavitarMotorFrame: TNavitarMotorFrame
     Height = 341
     Caption = 'UnitGB'
     TabOrder = 0
-    object CurrentPosition: TIntegerLabeledEdit
+    object MotorPosition: TIntegerLabeledEdit
       Left = 176
       Top = 37
       Width = 121
@@ -52,6 +52,7 @@ object NavitarMotorFrame: TNavitarMotorFrame
   object MotorPositionTimer: TTimer
     Enabled = False
     Interval = 100
+    OnTimer = MotorPositionTimerTimer
     Left = 296
     Top = 128
   end

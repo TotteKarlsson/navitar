@@ -31,7 +31,6 @@ void TNavitarMotorFrame::populate(NavitarMotor& m)
 
 void __fastcall TNavitarMotorFrame::FrameBtnClick(TObject *Sender)
 {
-
 	if(!mMotor)
     {
     	Log(lError) << "Motor is NULL in ButtonClick";
@@ -50,7 +49,15 @@ void __fastcall TNavitarMotorFrame::FrameBtnClick(TObject *Sender)
     	Log(lInfo) << "Driving motor " <<mMotor->getLabel()<<" to Limit";
     	mMotor->limit();
     }
+}
 
+
+//---------------------------------------------------------------------------
+void __fastcall TNavitarMotorFrame::MotorPositionTimerTimer(TObject *Sender)
+{
+
+	int pos = mMotor->getPosition();
+	MotorPosition->setValue(pos);
 }
 
 

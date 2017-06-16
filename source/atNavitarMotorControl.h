@@ -37,6 +37,7 @@ class NavitarMotorControl //: public ATObject
  		string 				            parseVersion(long val);
  		string 				            parseDate(long val);
         int								write(const int& reg, long value);
+        int								read(const int& reg, long& v);
 
 };
 
