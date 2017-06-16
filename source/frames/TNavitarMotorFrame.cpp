@@ -32,6 +32,7 @@ void TNavitarMotorFrame::populate(NavitarMotor& m)
 
     //Read motors max position
     MaxPosLabel->setValue(mMotor->getMaxPosition());
+    PositionTB->Max = MaxPosLabel->getValue();
 }
 
 //---------------------------------------------------------------------------
@@ -75,6 +76,7 @@ void __fastcall TNavitarMotorFrame::MotorPositionTimerTimer(TObject *Sender)
     }
 	int pos = mMotor->getPosition();
 	MotorPosition->setValue(pos);
+    PositionTB->Position = pos;
 }
 
 

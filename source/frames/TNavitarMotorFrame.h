@@ -18,7 +18,7 @@ class TNavitarMotorFrame : public TFrame
     __published:
 		TGroupBox *MotorGB;
 	TIntegerLabeledEdit *MotorPosition;
-        TTrackBar *TrackBar1;
+	TTrackBar *PositionTB;
         TTimer *MotorPositionTimer;
 	TButton *HomeBtn;
 	TButton *LimitBtn;

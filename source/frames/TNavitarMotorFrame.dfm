@@ -12,11 +12,18 @@ object NavitarMotorFrame: TNavitarMotorFrame
     Caption = 'UnitGB'
     TabOrder = 0
     object MaxPosLabel: TIntLabel
-      Left = 224
-      Top = 282
-      Width = 33
+      Left = 273
+      Top = 195
+      Width = 6
       Height = 13
       Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Value = -1
       TheFont.Charset = DEFAULT_CHARSET
       TheFont.Color = clWindowText
       TheFont.Height = -11
@@ -24,15 +31,15 @@ object NavitarMotorFrame: TNavitarMotorFrame
       TheFont.Style = []
     end
     object Label1: TLabel
-      Left = 127
-      Top = 282
-      Width = 91
+      Left = 223
+      Top = 195
+      Width = 44
       Height = 13
-      Caption = 'Motor Max Position'
+      Caption = 'Max Pos.'
     end
     object MotorPosition: TIntegerLabeledEdit
-      Left = 232
-      Top = 47
+      Left = 135
+      Top = 175
       Width = 81
       Height = 33
       EditLabel.Width = 77
@@ -47,26 +54,27 @@ object NavitarMotorFrame: TNavitarMotorFrame
       TabOrder = 0
       Text = '0'
     end
-    object TrackBar1: TTrackBar
-      Left = 30
-      Top = 64
-      Width = 45
-      Height = 211
-      Orientation = trVertical
+    object PositionTB: TTrackBar
+      Left = 103
+      Top = 127
+      Width = 145
+      Height = 25
+      ShowSelRange = False
       TabOrder = 1
+      TickStyle = tsNone
     end
     object HomeBtn: TButton
-      Left = 30
-      Top = 272
+      Left = 14
+      Top = 127
       Width = 75
       Height = 35
-      Caption = 'HomeBtn'
+      Caption = 'Home'
       TabOrder = 2
       OnClick = FrameBtnClick
     end
     object LimitBtn: TButton
-      Left = 30
-      Top = 33
+      Left = 263
+      Top = 127
       Width = 75
       Height = 35
       Caption = 'Limit'
