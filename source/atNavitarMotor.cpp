@@ -13,30 +13,6 @@ mID(ID),
 mLabel(ID == 1 ? "Focus" : "Zoom")
 {}
 
-bool NavitarMotor::connect()
-{
-    if(mMotorController.getHandle() && USBConnectionEstablished(mMotorController.getHandle(), DEF_MOTOR_CONTROLLER))
-    {
-        Log(lInfo) <<"Connection established to Navitar Motor controller with ID: "<<mID;
-        return true;
-    }
-    else
-    {
-        Log(lInfo) <<"Connection FAILED to Navitar Motor controller with ID: "<<mID;
-        return false;
-    }
-}
-
-bool NavitarMotor::disConnect()
-{
-	Log(lInfo) << "Disconnecting motor with ID:" << mID;
-	if(mMotorController.getHandle())
-	{
-		USBConnectionDisconnect(mMotorController.getHandle());
-    }
-
-    return true;
-}
 
 string NavitarMotor::getLabel()
 {

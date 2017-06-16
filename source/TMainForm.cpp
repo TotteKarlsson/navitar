@@ -114,8 +114,7 @@ void  TMainForm::onNavitarConnected()
 
 void  TMainForm::onNavitarDisconnected()
 {
-	ConnectBtn->Caption = "Connected";
-
+	ConnectBtn->Caption = "Connect";
     ProdIdLbl->Caption 	        = "N/A";
 	HWVerLbl->Caption           = "N/A";
    	SWVerLbl->Caption           = "N/A";
@@ -123,6 +122,8 @@ void  TMainForm::onNavitarDisconnected()
 
     enableDisableGroupBox(ControllerInfoGB, false);
 
+    TNavitarMotorFrame1->dePopulate();
+    TNavitarMotorFrame2->dePopulate();
 }
 
 //---------------------------------------------------------------------------

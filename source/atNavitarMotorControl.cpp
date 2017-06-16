@@ -41,48 +41,37 @@ bool NavitarMotorControl::connect()
     //Check for connected devices
     int res = USBFindUSBinterfaces();
 
-	//	Log(lDebug) <<"Connecting motor with ID: "<<mMotorID;
-	mHandle = USBConnectionConnect(1, DEF_MOTOR_CONTROLLER);
-
     if(res != 1)
     {
         Log(lInfo) <<"FAILED to Find any Navitar Motor controller";
         return false;
     }
 
-    //Move on and connect motors
-    if(!mZoom.connect())
+	Log(lDebug) <<"Connecting motor controller with ID: "<<1;
+	mHandle = USBConnectionConnect(1, DEF_MOTOR_CONTROLLER);
+
+    if(mHandle == 256)
     {
-    	Log(lError) << "Failed to connect to zoom motor";
-    }
-    else
-    {
-    	Log(lInfo) << "Motor 1 is connected";
+        Log(lInfo) <<"FAILED to connect to Navitar Motor controller";
+        mHandle = 0;
+        return false;
     }
 
-    if(!mFocus.connect())
-    {
-    	Log(lError) << "Failed to connect to Focus motor";
-    }
-    else
-    {
-    	Log(lInfo) << "Motor 2 is connected";
-    }
 	return true;
 }
 
 //---------------------------------------------------------------------------
 bool NavitarMotorControl::disConnect()
 {
-	mZoom.disConnect();
-    mFocus.disConnect();
+	int res = USBConnectionDisconnect(mHandle);
+    mHandle = 0;
     return true;
 }
 
 //---------------------------------------------------------------------------
 bool NavitarMotorControl::isConnected()
 {
-	return false;
+    return ((mHandle > 0) && mHandle != 256) ? true : false;
 }
 
 //---------------------------------------------------------------------------

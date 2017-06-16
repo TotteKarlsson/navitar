@@ -18,12 +18,6 @@ class NavitarMotor //: public ATObject
         						            //!Drive motor to the limit
 		void					            limit();
 
-        						            //!Connect to a motor
-		bool					            connect();
-
-        						            //!Connect to a motor
-		bool					            disConnect();
-
         									//!Get the motors current position
         int									getPosition();
 

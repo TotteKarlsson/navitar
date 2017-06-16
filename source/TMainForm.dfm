@@ -53,8 +53,8 @@ object MainForm: TMainForm
         Width = 353
         Height = 350
         Align = alClient
-        ExplicitLeft = 25
-        ExplicitTop = 35
+        ExplicitLeft = 0
+        ExplicitTop = 0
         ExplicitWidth = 353
         ExplicitHeight = 350
       end
@@ -68,9 +68,6 @@ object MainForm: TMainForm
       BevelInner = bvLowered
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 64
-      ExplicitTop = 208
-      ExplicitHeight = 41
       object ConnectBtn: TButton
         Left = 16
         Top = 35
@@ -88,7 +85,6 @@ object MainForm: TMainForm
         Align = alBottom
         Caption = 'Controller Info'
         TabOrder = 1
-        ExplicitTop = 408
         object Label1: TLabel
           Left = 16
           Top = 24
@@ -164,10 +160,10 @@ object MainForm: TMainForm
         Width = 388
         Height = 350
         Align = alClient
-        ExplicitLeft = 4
-        ExplicitTop = 17
+        ExplicitLeft = 0
+        ExplicitTop = 0
         ExplicitWidth = 388
-        ExplicitHeight = 340
+        ExplicitHeight = 350
       end
     end
   end
@@ -178,8 +174,6 @@ object MainForm: TMainForm
     Height = 245
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 420
-    ExplicitWidth = 962
     DesignSize = (
       939
       245)
@@ -200,7 +194,6 @@ object MainForm: TMainForm
       Lines.Strings = (
         'Memo1')
       TabOrder = 0
-      ExplicitWidth = 716
     end
     object InfoPanel: TPanel
       Left = 697
@@ -209,8 +202,6 @@ object MainForm: TMainForm
       Height = 243
       Align = alRight
       TabOrder = 1
-      ExplicitLeft = 911
-      ExplicitTop = 5
     end
     object Button1: TButton
       Left = 599
@@ -221,7 +212,6 @@ object MainForm: TMainForm
       Caption = 'Clear'
       TabOrder = 2
       OnClick = Button1Click
-      ExplicitLeft = 622
     end
   end
   object mShutDownTimer: TTimer

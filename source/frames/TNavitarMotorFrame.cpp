@@ -27,6 +27,16 @@ void TNavitarMotorFrame::populate(NavitarMotor& m)
 	mMotor = &m;
 	MotorGB->Caption = vclstr(mMotor->getLabel());
     enableDisableGroupBox(MotorGB, true);
+    MotorPositionTimer->Enabled = true;
+}
+
+//---------------------------------------------------------------------------
+void TNavitarMotorFrame::dePopulate()
+{
+    MotorPositionTimer->Enabled = true;
+	mMotor = NULL;
+	MotorGB->Caption = "<none>";
+    enableDisableGroupBox(MotorGB, false);
 }
 
 void __fastcall TNavitarMotorFrame::FrameBtnClick(TObject *Sender)
@@ -51,11 +61,14 @@ void __fastcall TNavitarMotorFrame::FrameBtnClick(TObject *Sender)
     }
 }
 
-
 //---------------------------------------------------------------------------
 void __fastcall TNavitarMotorFrame::MotorPositionTimerTimer(TObject *Sender)
 {
-
+    if(!mMotor)
+    {
+		MotorPosition->setValue(-1);
+        return;
+    }
 	int pos = mMotor->getPosition();
 	MotorPosition->setValue(pos);
 }
