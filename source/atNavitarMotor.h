@@ -21,6 +21,9 @@ class NavitarMotor //: public ATObject
         									//!Get the motors current position
         int									getPosition();
 
+        									//!Get the motors current position
+        int									getMaxPosition();
+
         									//!Get the motors label
         string								getLabel();
 

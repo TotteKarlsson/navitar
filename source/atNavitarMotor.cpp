@@ -13,7 +13,6 @@ mID(ID),
 mLabel(ID == 1 ? "Focus" : "Zoom")
 {}
 
-
 string NavitarMotor::getLabel()
 {
 	return mLabel;
@@ -63,6 +62,26 @@ int	NavitarMotor::getPosition()
     else if(mID == 2)
     {
 		mMotorController.read(REG_USER_CURRENT_2, pos);
+    }
+    else
+    {
+    	Log(lError) << "No such motor. ID was: "<<mID;
+        return -1;
+    }
+
+    return pos;
+}
+
+int	NavitarMotor::getMaxPosition()
+{
+	long pos;
+	if(mID == 1)
+    {
+		mMotorController.read(REG_SETUP_LIMIT_1, pos);
+    }
+    else if(mID == 2)
+    {
+		mMotorController.read(REG_SETUP_LIMIT_2, pos);
     }
     else
     {

@@ -11,14 +11,39 @@ object NavitarMotorFrame: TNavitarMotorFrame
     Height = 341
     Caption = 'UnitGB'
     TabOrder = 0
+    object MaxPosLabel: TIntLabel
+      Left = 224
+      Top = 282
+      Width = 33
+      Height = 13
+      Caption = '0'
+      TheFont.Charset = DEFAULT_CHARSET
+      TheFont.Color = clWindowText
+      TheFont.Height = -11
+      TheFont.Name = 'Tahoma'
+      TheFont.Style = []
+    end
+    object Label1: TLabel
+      Left = 127
+      Top = 282
+      Width = 91
+      Height = 13
+      Caption = 'Motor Max Position'
+    end
     object MotorPosition: TIntegerLabeledEdit
-      Left = 176
-      Top = 37
-      Width = 121
-      Height = 21
+      Left = 232
+      Top = 47
+      Width = 81
+      Height = 33
       EditLabel.Width = 77
       EditLabel.Height = 13
       EditLabel.Caption = 'Current Position'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
       Text = '0'
     end
@@ -53,7 +78,7 @@ object NavitarMotorFrame: TNavitarMotorFrame
     Enabled = False
     Interval = 100
     OnTimer = MotorPositionTimerTimer
-    Left = 296
-    Top = 128
+    Left = 48
+    Top = 192
   end
 end
