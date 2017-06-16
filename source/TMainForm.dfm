@@ -36,9 +36,6 @@ object MainForm: TMainForm
     Height = 512
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 257
-    ExplicitWidth = 769
-    ExplicitHeight = 460
     inline TNavitarMotorFrame1: TNavitarMotorFrame
       Left = 1
       Top = 1
@@ -48,13 +45,13 @@ object MainForm: TMainForm
       TabOrder = 0
       ExplicitLeft = 1
       ExplicitTop = 1
-      ExplicitWidth = 895
+      ExplicitWidth = 729
       ExplicitHeight = 144
       inherited MotorGB: TGroupBox
         Width = 729
         Height = 144
-        ExplicitWidth = 895
-        ExplicitHeight = 241
+        ExplicitWidth = 729
+        ExplicitHeight = 144
       end
     end
     inline TNavitarMotorFrame2: TNavitarMotorFrame
@@ -66,14 +63,13 @@ object MainForm: TMainForm
       TabOrder = 1
       ExplicitLeft = 1
       ExplicitTop = 145
-      ExplicitWidth = 895
+      ExplicitWidth = 729
       ExplicitHeight = 136
       inherited MotorGB: TGroupBox
         Width = 729
         Height = 136
-        ExplicitLeft = 3
-        ExplicitWidth = 767
-        ExplicitHeight = 105
+        ExplicitWidth = 729
+        ExplicitHeight = 136
       end
     end
     inline TPresetsFrame1: TPresetsFrame
@@ -83,45 +79,45 @@ object MainForm: TMainForm
       Height = 230
       Align = alClient
       TabOrder = 2
-      ExplicitLeft = 2
-      ExplicitTop = 93
-      ExplicitWidth = 309
-      ExplicitHeight = 221
+      ExplicitLeft = 1
+      ExplicitTop = 281
+      ExplicitWidth = 729
+      ExplicitHeight = 230
       inherited GroupBox1: TGroupBox
         Width = 729
         Height = 230
         ExplicitLeft = 0
         ExplicitTop = 0
-        ExplicitWidth = 309
-        ExplicitHeight = 221
+        ExplicitWidth = 729
+        ExplicitHeight = 230
         inherited TNavitarPreset1: TNavitarPreset
           Width = 725
           ExplicitLeft = 2
           ExplicitTop = 81
-          ExplicitWidth = 305
+          ExplicitWidth = 725
           inherited GroupBox1: TGroupBox
             Width = 725
-            ExplicitWidth = 305
+            ExplicitWidth = 725
           end
         end
         inherited NavitarPreset1: TNavitarPreset
           Width = 725
           ExplicitLeft = 2
           ExplicitTop = 15
-          ExplicitWidth = 305
+          ExplicitWidth = 725
           inherited GroupBox1: TGroupBox
             Width = 725
-            ExplicitWidth = 305
+            ExplicitWidth = 725
           end
         end
         inherited NavitarPreset2: TNavitarPreset
           Width = 725
           ExplicitLeft = 2
           ExplicitTop = 147
-          ExplicitWidth = 305
+          ExplicitWidth = 725
           inherited GroupBox1: TGroupBox
             Width = 725
-            ExplicitWidth = 305
+            ExplicitWidth = 725
           end
         end
       end
@@ -134,8 +130,6 @@ object MainForm: TMainForm
     Height = 148
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 552
-    ExplicitWidth = 969
     DesignSize = (
       1044
       148)
@@ -157,8 +151,6 @@ object MainForm: TMainForm
       Lines.Strings = (
         'Memo1')
       TabOrder = 0
-      ExplicitWidth = 443
-      ExplicitHeight = 243
     end
     object Button1: TButton
       Left = 925
@@ -169,7 +161,6 @@ object MainForm: TMainForm
       Caption = 'Clear'
       TabOrder = 1
       OnClick = Button1Click
-      ExplicitLeft = 850
     end
   end
   object LeftPanel: TGroupBox
@@ -182,7 +173,6 @@ object MainForm: TMainForm
     Color = clBtnFace
     ParentColor = False
     TabOrder = 2
-    ExplicitHeight = 575
     object ConnectBtn: TButton
       Left = 20
       Top = 24
@@ -200,8 +190,6 @@ object MainForm: TMainForm
       Align = alBottom
       Caption = 'Controller Info'
       TabOrder = 1
-      ExplicitTop = 343
-      ExplicitWidth = 253
       object Label1: TLabel
         Left = 16
         Top = 24
