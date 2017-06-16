@@ -8,7 +8,7 @@
 #include <Vcl.ExtCtrls.hpp>
 #include "mtkLogFileReader.h"
 #include "TIntegerLabeledEdit.h"
-#include "atNavitarMotorControl.h"
+#include "atNavitarMotorController.h"
 #include <Vcl.ComCtrls.hpp>
 #include "TNavitarMotorFrame.h"
 #include "TNavatarPresetsFrame.h"
@@ -49,7 +49,7 @@ __published:	// IDE-managed Components
 private:	// User declarations
         LogFileReader                           mLogFileReader;
         void __fastcall                         logMsg();
-        NavitarMotorControl						mNavitar;
+        NavitarMotorController						mNavitar;
         void									onNavitarConnected();
         void									onNavitarDisconnected();
 

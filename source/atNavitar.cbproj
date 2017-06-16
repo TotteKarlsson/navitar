@@ -120,8 +120,8 @@
             <DependentOn>atNavitarMotor.h</DependentOn>
             <BuildOrder>5</BuildOrder>
         </CppCompile>
-        <CppCompile Include="atNavitarMotorControl.cpp">
-            <DependentOn>atNavitarMotorControl.h</DependentOn>
+        <CppCompile Include="atNavitarMotorController.cpp">
+            <DependentOn>atNavitarMotorController.h</DependentOn>
             <BuildOrder>4</BuildOrder>
         </CppCompile>
         <PCHCompile Include="atNavitarPCH1.h">

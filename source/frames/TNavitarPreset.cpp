@@ -1,7 +1,7 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TNavitarPreset.h"
-#include "atNavitarMotorControl.h"
+#include "atNavitarMotorController.h"
 #pragma package(smart_init)
 #pragma link "TIntegerLabeledEdit"
 #pragma resource "*.dfm"
@@ -24,6 +24,9 @@ void TNavitarPreset::populate(NavitarMotorController& c)
 //---------------------------------------------------------------------------
 void __fastcall TNavitarPreset::GoButtonClick(TObject *Sender)
 {
-	mController->setPreset(ZoomPos->getValue(), FocusPos->getValue());
+	if(mController)
+    {
+		mController->setPreset(ZoomPos->getValue(), FocusPos->getValue());
+    }
 }
 

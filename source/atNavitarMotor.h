@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------
 
 using std::string;
-class NavitarMotorControl;
+class NavitarMotorController;
 
 struct MotorRegisters
 {
@@ -27,7 +27,7 @@ struct MotorRegisters
 class NavitarMotor //: public ATObject
 {
 	public:
-								            NavitarMotor(NavitarMotorControl& parent, int motorID);
+								            NavitarMotor(NavitarMotorController& parent, int motorID);
 
         						            //!Drive motor to home
 		void					            home();
@@ -48,7 +48,7 @@ class NavitarMotor //: public ATObject
         string								getLabel();
 
     protected:
-		NavitarMotorControl& 	            mMotorController;
+		NavitarMotorController& 	            mMotorController;
 
         									//!When calling registers, the motor ID indicates which motor to
                                             //!communicate with

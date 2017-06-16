@@ -1,12 +1,12 @@
 #pragma hdrstop
 #include "atNavitarMotor.h"
-#include "atNavitarMotorControl.h"
+#include "atNavitarMotorController.h"
 #include "mtkLogger.h"
 //---------------------------------------------------------------------------
 
 using namespace mtk;
 
-NavitarMotor::NavitarMotor(NavitarMotorControl& mc, int ID)
+NavitarMotor::NavitarMotor(NavitarMotorController& mc, int ID)
 :
 mMotorController(mc),
 mID(ID),
