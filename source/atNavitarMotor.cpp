@@ -11,7 +11,22 @@ NavitarMotor::NavitarMotor(NavitarMotorControl& mc, int ID)
 mMotorController(mc),
 mID(ID),
 mLabel(ID == 1 ? "Focus" : "Zoom")
-{}
+{
+	//Setup registers
+	mRegisters.USER_TARGET 			= mID == 1 ? REG_USER_TARGET_1 		  :  REG_USER_TARGET_2;
+    mRegisters.USER_INCREMENT       = mID == 1 ? REG_USER_INCREMENT_1 	  :  REG_USER_INCREMENT_2;
+    mRegisters.USER_CURRENT         = mID == 1 ? REG_USER_CURRENT_1 	  :  REG_USER_CURRENT_2;
+    mRegisters.USER_LIMIT           = mID == 1 ? REG_USER_LIMIT_1 		  :  REG_USER_LIMIT_2;
+    mRegisters.USER_STATUS          = mID == 1 ? REG_USER_STATUS_1        :  REG_USER_STATUS_2;
+    mRegisters.SETUP_ACCEL          = mID == 1 ? REG_SETUP_ACCEL_1        :  REG_SETUP_ACCEL_2;
+    mRegisters.SETUP_INITVELOCITY   = mID == 1 ? REG_SETUP_INITVELOCITY_1 :  REG_SETUP_INITVELOCITY_2;
+    mRegisters.SETUP_MAXVELOCITY    = mID == 1 ? REG_SETUP_MAXVELOCITY_1  :  REG_SETUP_MAXVELOCITY_2;
+    mRegisters.SETUP_REVBACKLASH    = mID == 1 ? REG_SETUP_REVBACKLASH_1  :  REG_SETUP_REVBACKLASH_2;
+    mRegisters.SETUP_FWDBACKLASH    = mID == 1 ? REG_SETUP_FWDBACKLASH_1  :  REG_SETUP_FWDBACKLASH_2;
+    mRegisters.SETUP_SENSORTYPE     = mID == 1 ? REG_SETUP_SENSORTYPE_1   :  REG_SETUP_SENSORTYPE_2;
+    mRegisters.SETUP_CONFIG         = mID == 1 ? REG_SETUP_CONFIG_1 	  :  REG_SETUP_CONFIG_2;
+    mRegisters.SETUP_LIMIT          = mID == 1 ? REG_SETUP_LIMIT_1 		  :  REG_SETUP_LIMIT_2;
+}
 
 string NavitarMotor::getLabel()
 {
@@ -21,74 +36,26 @@ string NavitarMotor::getLabel()
 void NavitarMotor::home()
 {
 	long temp = 0;
-	if(mID == 1)
-    {
-		mMotorController.write(REG_USER_LIMIT_1, temp);
-    }
-    else if(mID == 2)
-    {
-		mMotorController.write(REG_USER_LIMIT_2, temp);
-    }
-    else
-    {
-    	Log(lError) << "No such motor. ID was: "<<mID;
-    }
+	mMotorController.write(mRegisters.USER_LIMIT, temp);
 }
 
 void NavitarMotor::limit()
 {
 	long temp = 1;
-	if(mID == 1)
-    {
-		mMotorController.write(REG_USER_LIMIT_1, temp);
-    }
-    else if(mID == 2)
-    {
-		mMotorController.write(REG_USER_LIMIT_2, temp);
-    }
-    else
-    {
-    	Log(lError) << "No such motor. ID was: "<<mID;
-    }
+	mMotorController.write(mRegisters.USER_LIMIT, temp);
 }
 
 int	NavitarMotor::getPosition()
 {
 	long pos;
-	if(mID == 1)
-    {
-		mMotorController.read(REG_USER_CURRENT_1, pos);
-    }
-    else if(mID == 2)
-    {
-		mMotorController.read(REG_USER_CURRENT_2, pos);
-    }
-    else
-    {
-    	Log(lError) << "No such motor. ID was: "<<mID;
-        return -1;
-    }
-
+	mMotorController.read(mRegisters.USER_CURRENT, pos);
     return pos;
 }
 
 int	NavitarMotor::getMaxPosition()
 {
 	long pos;
-	if(mID == 1)
-    {
-		mMotorController.read(REG_SETUP_LIMIT_1, pos);
-    }
-    else if(mID == 2)
-    {
-		mMotorController.read(REG_SETUP_LIMIT_2, pos);
-    }
-    else
-    {
-    	Log(lError) << "No such motor. ID was: "<<mID;
-        return -1;
-    }
-
+	mMotorController.read(mRegisters.SETUP_LIMIT, pos);
     return pos;
 }
 
