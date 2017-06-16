@@ -11,24 +11,6 @@ object NavitarMotorFrame: TNavitarMotorFrame
     Height = 341
     Caption = 'UnitGB'
     TabOrder = 0
-    object HomeZoomBtn: TButton
-      Left = 22
-      Top = 281
-      Width = 91
-      Height = 41
-      Caption = 'Home'
-      TabOrder = 0
-      OnClick = ButtonClick
-    end
-    object LimitBtn: TButton
-      Left = 22
-      Top = 17
-      Width = 91
-      Height = 41
-      Caption = 'Limit'
-      TabOrder = 1
-      OnClick = ButtonClick
-    end
     object CurrentPosition: TIntegerLabeledEdit
       Left = 176
       Top = 37
@@ -37,7 +19,7 @@ object NavitarMotorFrame: TNavitarMotorFrame
       EditLabel.Width = 77
       EditLabel.Height = 13
       EditLabel.Caption = 'Current Position'
-      TabOrder = 2
+      TabOrder = 0
       Text = '0'
     end
     object TrackBar1: TTrackBar
@@ -46,7 +28,25 @@ object NavitarMotorFrame: TNavitarMotorFrame
       Width = 45
       Height = 211
       Orientation = trVertical
+      TabOrder = 1
+    end
+    object HomeBtn: TButton
+      Left = 30
+      Top = 272
+      Width = 75
+      Height = 35
+      Caption = 'HomeBtn'
+      TabOrder = 2
+      OnClick = FrameBtnClick
+    end
+    object LimitBtn: TButton
+      Left = 30
+      Top = 33
+      Width = 75
+      Height = 35
+      Caption = 'Limit'
       TabOrder = 3
+      OnClick = FrameBtnClick
     end
   end
   object MotorPositionTimer: TTimer

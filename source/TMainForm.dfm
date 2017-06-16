@@ -36,8 +36,6 @@ object MainForm: TMainForm
     Height = 352
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 962
-    ExplicitHeight = 423
     inline TNavitarMotorFrame1: TNavitarMotorFrame
       Left = 585
       Top = 1
@@ -45,10 +43,10 @@ object MainForm: TMainForm
       Height = 350
       Align = alRight
       TabOrder = 0
-      ExplicitLeft = 888
+      ExplicitLeft = 585
       ExplicitTop = 1
       ExplicitWidth = 353
-      ExplicitHeight = 524
+      ExplicitHeight = 350
       inherited MotorGB: TGroupBox
         Left = 0
         Top = 0
@@ -57,12 +55,8 @@ object MainForm: TMainForm
         Align = alClient
         ExplicitLeft = 25
         ExplicitTop = 35
-        inherited HomeZoomBtn: TButton
-          OnClick = nil
-        end
-        inherited LimitBtn: TButton
-          OnClick = nil
-        end
+        ExplicitWidth = 353
+        ExplicitHeight = 350
       end
     end
     object LeftPanel: TPanel
@@ -160,10 +154,10 @@ object MainForm: TMainForm
       Height = 350
       Align = alRight
       TabOrder = 2
-      ExplicitLeft = 248
+      ExplicitLeft = 197
       ExplicitTop = 1
       ExplicitWidth = 388
-      ExplicitHeight = 524
+      ExplicitHeight = 350
       inherited MotorGB: TGroupBox
         Left = 0
         Top = 0
@@ -174,12 +168,6 @@ object MainForm: TMainForm
         ExplicitTop = 17
         ExplicitWidth = 388
         ExplicitHeight = 340
-        inherited HomeZoomBtn: TButton
-          OnClick = nil
-        end
-        inherited LimitBtn: TButton
-          OnClick = nil
-        end
       end
     end
   end

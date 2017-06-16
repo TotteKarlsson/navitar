@@ -15,13 +15,15 @@ class NavitarMotor;
 class TNavitarMotorFrame : public TFrame
 {
     __published:
-	TGroupBox *MotorGB;
-        TButton *HomeZoomBtn;
-        TButton *LimitBtn;
+		TGroupBox *MotorGB;
         TIntegerLabeledEdit *CurrentPosition;
         TTrackBar *TrackBar1;
         TTimer *MotorPositionTimer;
-	void __fastcall ButtonClick(TObject *Sender);
+	TButton *HomeBtn;
+	TButton *LimitBtn;
+
+	void __fastcall FrameBtnClick(TObject *Sender);
+
     private:
 		NavitarMotor*			mMotor;
 
@@ -29,7 +31,6 @@ class TNavitarMotorFrame : public TFrame
         						__fastcall TNavitarMotorFrame(TComponent* Owner);
 		void					populate(NavitarMotor& m);
 };
-
 
 extern PACKAGE TNavitarMotorFrame *NavitarMotorFrame;
 #endif
