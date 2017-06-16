@@ -164,6 +164,13 @@ object MainForm: TMainForm
         ExplicitTop = 0
         ExplicitWidth = 388
         ExplicitHeight = 350
+        inherited MotorPosition: TIntegerLabeledEdit
+          Left = 136
+          EditLabel.ExplicitLeft = 136
+          EditLabel.ExplicitTop = 159
+          EditLabel.ExplicitWidth = 77
+          ExplicitLeft = 136
+        end
       end
     end
   end

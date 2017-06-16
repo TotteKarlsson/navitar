@@ -27,6 +27,7 @@ class TNavitarMotorFrame : public TFrame
 
 	void __fastcall FrameBtnClick(TObject *Sender);
 	void __fastcall MotorPositionTimerTimer(TObject *Sender);
+	void __fastcall MotorPositionExit(TObject *Sender);
 
     private:
 		NavitarMotor*			mMotor;

@@ -75,8 +75,19 @@ void __fastcall TNavitarMotorFrame::MotorPositionTimerTimer(TObject *Sender)
         return;
     }
 	int pos = mMotor->getPosition();
-	MotorPosition->setValue(pos);
+
+    if(!MotorPosition->Focused())
+    {
+		MotorPosition->setValue(pos);
+    }
     PositionTB->Position = pos;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TNavitarMotorFrame::MotorPositionExit(TObject *Sender)
+{
+	Log(lInfo) << "Setting new position to: "<<MotorPosition->getValue();
+    mMotor->setPosition(MotorPosition->getValue());
 }
 
 

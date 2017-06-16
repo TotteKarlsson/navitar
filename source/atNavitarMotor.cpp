@@ -52,6 +52,12 @@ int	NavitarMotor::getPosition()
     return pos;
 }
 
+int	NavitarMotor::setPosition(int pos)
+{
+	long temp = pos;
+	mMotorController.write(mRegisters.USER_TARGET, temp);
+}
+
 int	NavitarMotor::getMaxPosition()
 {
 	long pos;

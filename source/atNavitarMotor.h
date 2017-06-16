@@ -36,6 +36,9 @@ class NavitarMotor //: public ATObject
 		void					            limit();
 
         									//!Get the motors current position
+        int									setPosition(int pos);
+
+        									//!Get the motors current position
         int									getPosition();
 
         									//!Get the motors current position

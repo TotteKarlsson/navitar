@@ -14,9 +14,9 @@ object NavitarMotorFrame: TNavitarMotorFrame
     object MaxPosLabel: TIntLabel
       Left = 273
       Top = 195
-      Width = 6
+      Width = 10
       Height = 13
-      Caption = '0'
+      Caption = '-1'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -53,6 +53,7 @@ object NavitarMotorFrame: TNavitarMotorFrame
       ParentFont = False
       TabOrder = 0
       Text = '0'
+      OnExit = MotorPositionExit
     end
     object PositionTB: TTrackBar
       Left = 103
