@@ -77,4 +77,24 @@ void NavitarMotor::limit()
     }
 }
 
+int	NavitarMotor::getPosition()
+{
+	long pos;
+	if(mID == 1)
+    {
+		mMotorController.read(REG_USER_CURRENT_1, pos);
+    }
+    else if(mID == 2)
+    {
+		mMotorController.read(REG_USER_CURRENT_2, pos);
+    }
+    else
+    {
+    	Log(lError) << "No such motor. ID was: "<<mID;
+        return -1;
+    }
+
+    return pos;
+}
+
 

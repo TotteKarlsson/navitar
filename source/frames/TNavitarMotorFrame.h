@@ -9,20 +9,21 @@
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 
-//---------------------------------------------------------------------------
+
 class NavitarMotor;
 
 class TNavitarMotorFrame : public TFrame
 {
     __published:
 		TGroupBox *MotorGB;
-        TIntegerLabeledEdit *CurrentPosition;
+	TIntegerLabeledEdit *MotorPosition;
         TTrackBar *TrackBar1;
         TTimer *MotorPositionTimer;
 	TButton *HomeBtn;
 	TButton *LimitBtn;
 
 	void __fastcall FrameBtnClick(TObject *Sender);
+	void __fastcall MotorPositionTimerTimer(TObject *Sender);
 
     private:
 		NavitarMotor*			mMotor;

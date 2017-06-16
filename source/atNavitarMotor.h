@@ -24,6 +24,10 @@ class NavitarMotor //: public ATObject
         						            //!Connect to a motor
 		bool					            disConnect();
 
+        									//!Get the motors current position
+        int									getPosition();
+
+        									//!Get the motors label
         string								getLabel();
 
     protected:
