@@ -8,10 +8,10 @@
 #include <Vcl.ExtCtrls.hpp>
 #include "mtkLogFileReader.h"
 #include "TIntegerLabeledEdit.h"
-#include "atNavitarMotorController.h"
+#include "navitar/atNavitarMotorController.h"
 #include <Vcl.ComCtrls.hpp>
-#include "TNavitarMotorFrame.h"
-#include "TNavatarPresetsFrame.h"
+#include "frames/TNavitarMotorFrame.h"
+#include "frames/TNavatarPresetsFrame.h"
 //---------------------------------------------------------------------------
 
 class TMainForm : public TForm

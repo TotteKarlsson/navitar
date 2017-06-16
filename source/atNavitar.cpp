@@ -9,10 +9,7 @@
 #include "mtkWin32Utils.h"
 #include "mtkLogger.h"
 //---------------------------------------------------------------------------
-USEFORM("frames\TNavatarPresetsFrame.cpp", PresetsFrame); /* TFrame: File Type */
-USEFORM("frames\TNavitarMotorFrame.cpp", NavitarMotorFrame); /* TFrame: File Type */
 USEFORM("TMainForm.cpp", MainForm);
-USEFORM("frames\TNavitarPreset.cpp", NavitarPreset); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 using std::string;
 using namespace mtk;
@@ -82,10 +79,11 @@ void setupLogging()
 	#pragma comment(lib, "mtkIPC.lib")
 #endif
 
-//#pragma comment(lib, "atCore.lib")
+#pragma comment(lib, "atCore.lib")
 //#pragma comment(lib, "atResources.lib")
 #pragma comment(lib, "poco_foundation-static.lib")
 #pragma comment(lib, "navusbAPI_B1.lib")
+#pragma comment(lib, "atVCLCore.bpi")
 
 
 #pragma comment(lib, "VCLCommon.bpi")
