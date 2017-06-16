@@ -31,6 +31,7 @@ class TNavitarMotorFrame : public TFrame
     public:
         						__fastcall TNavitarMotorFrame(TComponent* Owner);
 		void					populate(NavitarMotor& m);
+		void					dePopulate();
 };
 
 extern PACKAGE TNavitarMotorFrame *NavitarMotorFrame;
