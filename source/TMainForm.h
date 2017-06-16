@@ -23,7 +23,6 @@ __published:	// IDE-managed Components
 	TSplitter *Splitter1;
 	TButton *Button1;
 	TPanel *BottomPanel;
-	TPanel *InfoPanel;
 	TSplitter *Splitter2;
 	TNavitarMotorFrame *TNavitarMotorFrame1;
 	TNavitarMotorFrame *TNavitarMotorFrame2;

@@ -1,24 +1,22 @@
 object NavitarMotorFrame: TNavitarMotorFrame
   Left = 0
   Top = 0
-  Width = 390
-  Height = 248
+  Width = 360
+  Height = 120
   TabOrder = 0
   object MotorGB: TGroupBox
     Left = 0
     Top = 0
-    Width = 390
-    Height = 248
+    Width = 360
+    Height = 120
     Align = alClient
     Caption = 'UnitGB'
     TabOrder = 0
-    ExplicitLeft = 32
-    ExplicitTop = 36
-    ExplicitWidth = 361
-    ExplicitHeight = 341
+    ExplicitWidth = 390
+    ExplicitHeight = 248
     object MaxPosLabel: TIntLabel
       Left = 273
-      Top = 195
+      Top = 92
       Width = 10
       Height = 13
       Caption = '-1'
@@ -37,14 +35,14 @@ object NavitarMotorFrame: TNavitarMotorFrame
     end
     object Label1: TLabel
       Left = 223
-      Top = 195
+      Top = 92
       Width = 44
       Height = 13
       Caption = 'Max Pos.'
     end
     object MotorPosition: TIntegerLabeledEdit
       Left = 135
-      Top = 175
+      Top = 72
       Width = 81
       Height = 33
       EditLabel.Width = 77
@@ -62,7 +60,7 @@ object NavitarMotorFrame: TNavitarMotorFrame
     end
     object PositionTB: TTrackBar
       Left = 103
-      Top = 127
+      Top = 24
       Width = 145
       Height = 25
       ShowSelRange = False
@@ -71,7 +69,7 @@ object NavitarMotorFrame: TNavitarMotorFrame
     end
     object HomeBtn: TButton
       Left = 14
-      Top = 127
+      Top = 24
       Width = 75
       Height = 35
       Caption = 'Home'
@@ -80,7 +78,7 @@ object NavitarMotorFrame: TNavitarMotorFrame
     end
     object LimitBtn: TButton
       Left = 263
-      Top = 127
+      Top = 24
       Width = 75
       Height = 35
       Caption = 'Limit'
@@ -92,7 +90,7 @@ object NavitarMotorFrame: TNavitarMotorFrame
     Enabled = False
     Interval = 100
     OnTimer = MotorPositionTimerTimer
-    Left = 48
-    Top = 192
+    Left = 64
+    Top = 80
   end
 end

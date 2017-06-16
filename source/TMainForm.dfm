@@ -3,8 +3,8 @@ object MainForm: TMainForm
   Top = 0
   BorderStyle = bsSingle
   Caption = 'AT Navitar Control'
-  ClientHeight = 708
-  ClientWidth = 1026
+  ClientHeight = 663
+  ClientWidth = 1044
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,8 +20,8 @@ object MainForm: TMainForm
   TextHeight = 13
   object Splitter1: TSplitter
     Left = 0
-    Top = 460
-    Width = 1026
+    Top = 512
+    Width = 1044
     Height = 3
     Cursor = crVSplit
     Align = alBottom
@@ -30,156 +30,162 @@ object MainForm: TMainForm
     ExplicitWidth = 929
   end
   object TopPanel: TPanel
-    Left = 257
+    Left = 313
     Top = 0
-    Width = 769
-    Height = 460
+    Width = 731
+    Height = 512
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 191
-    ExplicitWidth = 818
+    ExplicitLeft = 257
+    ExplicitWidth = 769
+    ExplicitHeight = 460
     inline TNavitarMotorFrame1: TNavitarMotorFrame
-      Left = 415
+      Left = 1
       Top = 1
-      Width = 353
-      Height = 458
-      Align = alRight
+      Width = 729
+      Height = 144
+      Align = alTop
       TabOrder = 0
-      ExplicitLeft = 585
+      ExplicitLeft = 1
       ExplicitTop = 1
-      ExplicitWidth = 353
-      ExplicitHeight = 350
+      ExplicitWidth = 895
+      ExplicitHeight = 144
       inherited MotorGB: TGroupBox
-        Width = 353
-        Height = 458
+        Width = 729
+        Height = 144
+        ExplicitWidth = 895
+        ExplicitHeight = 241
       end
     end
     inline TNavitarMotorFrame2: TNavitarMotorFrame
       Left = 1
-      Top = 1
-      Width = 414
-      Height = 458
-      Align = alClient
+      Top = 145
+      Width = 729
+      Height = 136
+      Align = alTop
       TabOrder = 1
-      ExplicitLeft = 197
-      ExplicitTop = 1
-      ExplicitWidth = 388
-      ExplicitHeight = 350
+      ExplicitLeft = 1
+      ExplicitTop = 145
+      ExplicitWidth = 895
+      ExplicitHeight = 136
       inherited MotorGB: TGroupBox
-        Width = 414
-        Height = 458
+        Width = 729
+        Height = 136
+        ExplicitLeft = 3
+        ExplicitWidth = 767
+        ExplicitHeight = 105
+      end
+    end
+    inline TPresetsFrame1: TPresetsFrame
+      Left = 1
+      Top = 281
+      Width = 729
+      Height = 230
+      Align = alClient
+      TabOrder = 2
+      ExplicitLeft = 2
+      ExplicitTop = 93
+      ExplicitWidth = 309
+      ExplicitHeight = 221
+      inherited GroupBox1: TGroupBox
+        Width = 729
+        Height = 230
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 309
+        ExplicitHeight = 221
+        inherited TNavitarPreset1: TNavitarPreset
+          Width = 725
+          ExplicitLeft = 2
+          ExplicitTop = 81
+          ExplicitWidth = 305
+          inherited GroupBox1: TGroupBox
+            Width = 725
+            ExplicitWidth = 305
+          end
+        end
+        inherited NavitarPreset1: TNavitarPreset
+          Width = 725
+          ExplicitLeft = 2
+          ExplicitTop = 15
+          ExplicitWidth = 305
+          inherited GroupBox1: TGroupBox
+            Width = 725
+            ExplicitWidth = 305
+          end
+        end
+        inherited NavitarPreset2: TNavitarPreset
+          Width = 725
+          ExplicitLeft = 2
+          ExplicitTop = 147
+          ExplicitWidth = 305
+          inherited GroupBox1: TGroupBox
+            Width = 725
+            ExplicitWidth = 305
+          end
+        end
       end
     end
   end
   object BottomPanel: TPanel
     Left = 0
-    Top = 463
-    Width = 1026
-    Height = 245
+    Top = 515
+    Width = 1044
+    Height = 148
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 355
-    ExplicitWidth = 939
+    ExplicitTop = 552
+    ExplicitWidth = 969
     DesignSize = (
-      1026
-      245)
+      1044
+      148)
     object Splitter2: TSplitter
-      Left = 444
+      Left = 1040
       Top = 1
-      Height = 243
+      Height = 146
       Align = alRight
       ExplicitLeft = 881
       ExplicitTop = 9
+      ExplicitHeight = 243
     end
     object mInfoMemo: TMemo
       Left = 1
       Top = 1
-      Width = 443
-      Height = 243
+      Width = 1039
+      Height = 146
       Align = alClient
       Lines.Strings = (
         'Memo1')
       TabOrder = 0
-      ExplicitWidth = 592
-    end
-    object InfoPanel: TPanel
-      Left = 447
-      Top = 1
-      Width = 578
-      Height = 243
-      Align = alRight
-      TabOrder = 1
-      ExplicitLeft = 360
-      inline TPresetsFrame1: TPresetsFrame
-        Left = 1
-        Top = 1
-        Width = 576
-        Height = 241
-        Align = alClient
-        TabOrder = 0
-        ExplicitLeft = 104
-        ExplicitTop = 48
-        inherited GroupBox1: TGroupBox
-          Width = 576
-          Height = 241
-          inherited TNavitarPreset1: TNavitarPreset
-            Width = 572
-            ExplicitLeft = 2
-            ExplicitTop = 81
-            ExplicitWidth = 572
-            inherited GroupBox1: TGroupBox
-              Width = 572
-              ExplicitWidth = 572
-            end
-          end
-          inherited NavitarPreset1: TNavitarPreset
-            Width = 572
-            ExplicitLeft = 2
-            ExplicitTop = 15
-            ExplicitWidth = 572
-            inherited GroupBox1: TGroupBox
-              Width = 572
-              ExplicitWidth = 572
-            end
-          end
-          inherited NavitarPreset2: TNavitarPreset
-            Width = 572
-            ExplicitLeft = 2
-            ExplicitTop = 147
-            ExplicitWidth = 572
-            inherited GroupBox1: TGroupBox
-              Width = 572
-              ExplicitWidth = 572
-            end
-          end
-        end
-      end
+      ExplicitWidth = 443
+      ExplicitHeight = 243
     end
     object Button1: TButton
-      Left = 339
+      Left = 925
       Top = 20
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Clear'
-      TabOrder = 2
+      TabOrder = 1
       OnClick = Button1Click
-      ExplicitLeft = 322
+      ExplicitLeft = 850
     end
   end
   object LeftPanel: TGroupBox
     Left = 0
     Top = 0
-    Width = 257
-    Height = 460
+    Width = 313
+    Height = 512
     Align = alLeft
     Caption = 'Misc.'
     Color = clBtnFace
     ParentColor = False
     TabOrder = 2
+    ExplicitHeight = 575
     object ConnectBtn: TButton
-      Left = 16
-      Top = 35
+      Left = 20
+      Top = 24
       Width = 153
       Height = 57
       Caption = 'Connect'
@@ -188,15 +194,14 @@ object MainForm: TMainForm
     end
     object ControllerInfoGB: TGroupBox
       Left = 2
-      Top = 343
-      Width = 253
+      Top = 395
+      Width = 309
       Height = 115
       Align = alBottom
       Caption = 'Controller Info'
       TabOrder = 1
-      ExplicitLeft = 1
-      ExplicitTop = 344
-      ExplicitWidth = 255
+      ExplicitTop = 343
+      ExplicitWidth = 253
       object Label1: TLabel
         Left = 16
         Top = 24
