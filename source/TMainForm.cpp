@@ -9,6 +9,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TIntegerLabeledEdit"
+#pragma link "TNavitarMotorFrame"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 
@@ -94,16 +95,6 @@ void __fastcall TMainForm::ButtonClick(TObject *Sender)
             }
         }
     }
-    else if (b == HomeZoomBtn)
-    {
-    	mNavitar.getZoom().home();
-        mNavitar.getFocus().home();
-    }
-    else if (b == LimitBtn)
-    {
-    	mNavitar.getZoom().limit();
-        mNavitar.getFocus().limit();
-    }
 }
 
 void  TMainForm::onNavitarConnected()
@@ -113,8 +104,12 @@ void  TMainForm::onNavitarConnected()
 	HWVerLbl->Caption           = vclstr(mNavitar.getHardwareVersion());
    	SWVerLbl->Caption           = vclstr(mNavitar.getSoftwareVersion());
     FirmWareDateLbl->Caption   	= vclstr(mNavitar.getDriverSoftwareBuildDate());
+
+    TNavitarMotorFrame1->populate(mNavitar.getZoom());
+    TNavitarMotorFrame2->populate(mNavitar.getFocus());
+
     enableDisableGroupBox(ControllerInfoGB, true);
-    enableDisableGroupBox(ZoomGB, true);
+
 }
 
 void  TMainForm::onNavitarDisconnected()
@@ -127,14 +122,13 @@ void  TMainForm::onNavitarDisconnected()
     FirmWareDateLbl->Caption   	= "N/A";
 
     enableDisableGroupBox(ControllerInfoGB, false);
-    enableDisableGroupBox(ZoomGB, false);
+
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
     enableDisableGroupBox(ControllerInfoGB, false);
-    enableDisableGroupBox(ZoomGB, false);
 }
 
 //---------------------------------------------------------------------------

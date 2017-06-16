@@ -1,6 +1,5 @@
 #ifndef TMainFormH
 #define TMainFormH
-//---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
@@ -11,6 +10,7 @@
 #include "TIntegerLabeledEdit.h"
 #include "atNavitarMotorControl.h"
 #include <Vcl.ComCtrls.hpp>
+#include "TNavitarMotorFrame.h"
 //---------------------------------------------------------------------------
 
 class TMainForm : public TForm
@@ -19,12 +19,14 @@ __published:	// IDE-managed Components
 	TMemo *mInfoMemo;
 	TTimer *mShutDownTimer;
 	TButton *ConnectBtn;
-	TGroupBox *ZoomGB;
-	TButton *HomeZoomBtn;
-	TButton *LimitBtn;
-	TIntegerLabeledEdit *CurrentPosition;
 	TPanel *TopPanel;
 	TSplitter *Splitter1;
+	TButton *Button1;
+	TPanel *BottomPanel;
+	TPanel *InfoPanel;
+	TSplitter *Splitter2;
+	TNavitarMotorFrame *TNavitarMotorFrame1;
+	TPanel *LeftPanel;
 	TGroupBox *ControllerInfoGB;
 	TLabel *Label1;
 	TLabel *Label2;
@@ -34,11 +36,7 @@ __published:	// IDE-managed Components
 	TLabel *HWVerLbl;
 	TLabel *SWVerLbl;
 	TLabel *FirmWareDateLbl;
-	TButton *Button1;
-	TPanel *BottomPanel;
-	TPanel *InfoPanel;
-	TSplitter *Splitter2;
-	TTrackBar *TrackBar1;
+	TNavitarMotorFrame *TNavitarMotorFrame2;
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall mShutDownTimerTimer(TObject *Sender);

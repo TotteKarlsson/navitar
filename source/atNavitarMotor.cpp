@@ -9,69 +9,71 @@ using namespace mtk;
 NavitarMotor::NavitarMotor(NavitarMotorControl& mc, int ID)
 :
 mMotorController(mc),
-mMotorID(ID)//,
-//mHandle(0)
-{
-}
+mID(ID),
+mLabel(ID == 1 ? "Focus" : "Zoom")
+{}
 
 bool NavitarMotor::connect()
 {
-//    Log(lDebug) <<"Handle returned:" << mHandle;
     if(mMotorController.getHandle() && USBConnectionEstablished(mMotorController.getHandle(), DEF_MOTOR_CONTROLLER))
     {
-        Log(lInfo) <<"Connection established to Navitar Motor controller with ID: "<<mMotorID;
+        Log(lInfo) <<"Connection established to Navitar Motor controller with ID: "<<mID;
         return true;
     }
     else
     {
-        Log(lInfo) <<"Connection FAILED to Navitar Motor controller with ID: "<<mMotorID;
+        Log(lInfo) <<"Connection FAILED to Navitar Motor controller with ID: "<<mID;
         return false;
     }
 }
 
 bool NavitarMotor::disConnect()
 {
-	Log(lInfo) << "Disconnecting motor with ID:" << mMotorID;
+	Log(lInfo) << "Disconnecting motor with ID:" << mID;
 	if(mMotorController.getHandle())
 	{
 		USBConnectionDisconnect(mMotorController.getHandle());
     }
 
-//    mMotorController.getHandle() = 0;
     return true;
+}
+
+string NavitarMotor::getLabel()
+{
+	return mLabel;
 }
 
 void NavitarMotor::home()
 {
 	long temp = 0;
-	if(mMotorID == 1)
+	if(mID == 1)
     {
 		mMotorController.write(REG_USER_LIMIT_1, temp);
     }
-    else if(mMotorID == 2)
+    else if(mID == 2)
     {
 		mMotorController.write(REG_USER_LIMIT_2, temp);
     }
     else
     {
-    	Log(lError) << "No such motor. ID was: "<<mMotorID;
+    	Log(lError) << "No such motor. ID was: "<<mID;
     }
 }
 
 void NavitarMotor::limit()
 {
 	long temp = 1;
-	if(mMotorID == 1)
+	if(mID == 1)
     {
 		mMotorController.write(REG_USER_LIMIT_1, temp);
     }
-    else if(mMotorID == 2)
+    else if(mID == 2)
     {
 		mMotorController.write(REG_USER_LIMIT_2, temp);
     }
     else
     {
-    	Log(lError) << "No such motor. ID was: "<<mMotorID;
+    	Log(lError) << "No such motor. ID was: "<<mID;
     }
 }
 

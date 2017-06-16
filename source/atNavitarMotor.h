@@ -1,34 +1,40 @@
 #ifndef atNavitarMotorH
 #define atNavitarMotorH
 //#include "atATObject.h"
+#include <string>
 //---------------------------------------------------------------------------
 
+using std::string;
 class NavitarMotorControl;
-class NavitarMotor //://: public ATObject
+
+class NavitarMotor //: public ATObject
 {
 	public:
-								NavitarMotor(NavitarMotorControl& parent, int motorID);
+								            NavitarMotor(NavitarMotorControl& parent, int motorID);
 
-        						//!Drive motor to home
-		void					home();
+        						            //!Drive motor to home
+		void					            home();
 
-        						//!Drive motor to the limit
-		void					limit();
+        						            //!Drive motor to the limit
+		void					            limit();
 
-        						//!Connect to a motor
-		bool					connect();
+        						            //!Connect to a motor
+		bool					            connect();
 
-        						//!Connect to a motor
-		bool					disConnect();
- //       int						getHandle(){return mHandle;}
+        						            //!Connect to a motor
+		bool					            disConnect();
+
+        string								getLabel();
 
     protected:
-		NavitarMotorControl& 	mMotorController;
-        int						mMotorID;
+		NavitarMotorControl& 	            mMotorController;
 
-        						//!the handle is returned when connecting and used for API calls
-                                //!using this motor
-//        int						mHandle;
+        									//!When calling registers, the motor ID indicates which motor to
+                                            //!communicate with
+        int						            mID;
+
+        									//!The label holds a "name" for the motor, Zoom or Focus
+        string								mLabel;
 
 };
 
