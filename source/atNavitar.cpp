@@ -9,8 +9,9 @@
 #include "mtkWin32Utils.h"
 #include "mtkLogger.h"
 //---------------------------------------------------------------------------
-USEFORM("TMainForm.cpp", MainForm);
 USEFORM("frames\TNavitarMotorFrame.cpp", NavitarMotorFrame); /* TFrame: File Type */
+USEFORM("TMainForm.cpp", MainForm);
+USEFORM("frames\TNavatarPresetsFrame.cpp", PresetsFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 using std::string;
 using namespace mtk;

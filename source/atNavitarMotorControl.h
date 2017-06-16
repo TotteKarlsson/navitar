@@ -12,7 +12,6 @@ class NavitarMotorControl //: public ATObject
 {
    	friend NavitarMotor;
 	public:
-
 							            NavitarMotorControl();
 							            ~NavitarMotorControl();
 		bool				            connect();
@@ -27,10 +26,10 @@ class NavitarMotorControl //: public ATObject
 		string				            getDriverSoftwareBuildDate();
         string                          getHardwareVersion();
         string                          getSoftwareVersion();
-        int								getHandle(){return mHandle;}
+        int								getHandle(){return mMotorControllerHandle;}
 
 	protected:
-    	int					            mHandle;
+    	int					            mMotorControllerHandle;
         NavitarMotor		            mZoom;
 		NavitarMotor		            mFocus;
 
@@ -38,7 +37,6 @@ class NavitarMotorControl //: public ATObject
  		string 				            parseDate(long val);
         int								write(const int& reg, long value);
         int								read(const int& reg, long& v);
-
 };
 
 

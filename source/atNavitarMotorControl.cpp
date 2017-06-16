@@ -14,7 +14,7 @@ using Poco::DateTime;
 //---------------------------------------------------------------------------
 NavitarMotorControl::NavitarMotorControl()
 :
-mHandle(0),
+mMotorControllerHandle(0),
 mZoom( *this,2),
 mFocus(*this,1)
 {
@@ -48,12 +48,12 @@ bool NavitarMotorControl::connect()
     }
 
 	Log(lDebug) <<"Connecting motor controller with ID: "<<1;
-	mHandle = USBConnectionConnect(1, DEF_MOTOR_CONTROLLER);
+	mMotorControllerHandle = USBConnectionConnect(1, DEF_MOTOR_CONTROLLER);
 
-    if(mHandle == 256)
+    if(mMotorControllerHandle == 256)
     {
         Log(lInfo) <<"FAILED to connect to Navitar Motor controller";
-        mHandle = 0;
+        mMotorControllerHandle = 0;
         return false;
     }
 
@@ -63,23 +63,23 @@ bool NavitarMotorControl::connect()
 //---------------------------------------------------------------------------
 bool NavitarMotorControl::disConnect()
 {
-	int res = USBConnectionDisconnect(mHandle);
-    mHandle = 0;
+	int res = USBConnectionDisconnect(mMotorControllerHandle);
+    mMotorControllerHandle = 0;
     return true;
 }
 
 //---------------------------------------------------------------------------
 bool NavitarMotorControl::isConnected()
 {
-    return ((mHandle > 0) && mHandle != 256) ? true : false;
+    return ((mMotorControllerHandle > 0) && mMotorControllerHandle != 256) ? true : false;
 }
 
 //---------------------------------------------------------------------------
 int	NavitarMotorControl::write(const int& reg, long value)
 {
-	if(mHandle)
+	if(mMotorControllerHandle)
     {
-		int res = USBConnectionWrite(mHandle, reg, &value);
+		int res = USBConnectionWrite(mMotorControllerHandle, reg, &value);
         return res;
     }
     return 0;
@@ -88,9 +88,9 @@ int	NavitarMotorControl::write(const int& reg, long value)
 //---------------------------------------------------------------------------
 int	NavitarMotorControl::read(const int& reg, long& value)
 {
-	if(mHandle)
+	if(mMotorControllerHandle)
     {
-		int res = USBConnectionRead(mHandle, reg, &value);
+		int res = USBConnectionRead(mMotorControllerHandle, reg, &value);
         return res;
     }
     return 0;
@@ -107,13 +107,13 @@ bool NavitarMotorControl::home()
 //---------------------------------------------------------------------------
 string NavitarMotorControl::getProductID()
 {
-    if(!mHandle)
+    if(!mMotorControllerHandle)
     {
     	return "UNDEFINED PRODUCT ID";
     }
 
 	long val;
-    int res = USBConnectionRead(mHandle, REG_SYS_PRODUCTID, &val);
+    int res = USBConnectionRead(mMotorControllerHandle, REG_SYS_PRODUCTID, &val);
     Log(lDebug) <<"Reading Product ID:" << res;
     Log(lDebug) <<"Read result:" << val;
 
@@ -134,13 +134,13 @@ string NavitarMotorControl::getProductID()
 //---------------------------------------------------------------------------
 string NavitarMotorControl::getDriverSoftwareBuildDate()
 {
-    if(!mHandle)
+    if(!mMotorControllerHandle)
     {
     	return "UNDEFINED SW BUILD DATE";
     }
 
 	long val;
-    int res = USBConnectionRead(mHandle, REG_SYS_VERSIONDATE, &val);
+    int res = USBConnectionRead(mMotorControllerHandle, REG_SYS_VERSIONDATE, &val);
     Log(lDebug) <<"Reading version date:" << res<<", "<< val;
 	return parseDate(val);
 }
@@ -148,13 +148,13 @@ string NavitarMotorControl::getDriverSoftwareBuildDate()
 //---------------------------------------------------------------------------
 string NavitarMotorControl::getHardwareVersion()
 {
-    if(!mHandle)
+    if(!mMotorControllerHandle)
     {
     	return "UNDEFINED HW VERSION";
     }
 
 	long val;
-    int res = USBConnectionRead(mHandle, REG_SYS_VERSIONHW, &val);
+    int res = USBConnectionRead(mMotorControllerHandle, REG_SYS_VERSIONHW, &val);
     Log(lDebug) <<"Reading hardware version:" << res<<", "<< val;
 	return parseVersion(val);
 }
@@ -163,7 +163,7 @@ string NavitarMotorControl::getHardwareVersion()
 string NavitarMotorControl::getSoftwareVersion()
 {
 	long val;
-    int res = USBConnectionRead(mHandle, REG_SYS_VERSIONSW, &val);
+    int res = USBConnectionRead(mMotorControllerHandle, REG_SYS_VERSIONSW, &val);
     Log(lDebug) <<"Result and value from USBConnectionRead:" << res<<", "<< val;
 	return parseVersion(val);
 }
