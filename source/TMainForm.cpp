@@ -108,9 +108,7 @@ void  TMainForm::onNavitarConnected()
 
     TNavitarMotorFrame1->populate(mNavitar.getZoom());
     TNavitarMotorFrame2->populate(mNavitar.getFocus());
-
     enableDisableGroupBox(ControllerInfoGB, true);
-
 }
 
 void  TMainForm::onNavitarDisconnected()
