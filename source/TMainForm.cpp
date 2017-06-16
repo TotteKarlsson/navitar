@@ -10,6 +10,7 @@
 #pragma package(smart_init)
 #pragma link "TIntegerLabeledEdit"
 #pragma link "TNavitarMotorFrame"
+#pragma link "TNavatarPresetsFrame"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 

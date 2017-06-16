@@ -11,6 +11,7 @@
 #include "atNavitarMotorControl.h"
 #include <Vcl.ComCtrls.hpp>
 #include "TNavitarMotorFrame.h"
+#include "TNavatarPresetsFrame.h"
 //---------------------------------------------------------------------------
 
 class TMainForm : public TForm
@@ -18,7 +19,6 @@ class TMainForm : public TForm
 __published:	// IDE-managed Components
 	TMemo *mInfoMemo;
 	TTimer *mShutDownTimer;
-	TButton *ConnectBtn;
 	TPanel *TopPanel;
 	TSplitter *Splitter1;
 	TButton *Button1;
@@ -26,7 +26,10 @@ __published:	// IDE-managed Components
 	TPanel *InfoPanel;
 	TSplitter *Splitter2;
 	TNavitarMotorFrame *TNavitarMotorFrame1;
-	TPanel *LeftPanel;
+	TNavitarMotorFrame *TNavitarMotorFrame2;
+	TPresetsFrame *TPresetsFrame1;
+	TGroupBox *LeftPanel;
+	TButton *ConnectBtn;
 	TGroupBox *ControllerInfoGB;
 	TLabel *Label1;
 	TLabel *Label2;
@@ -36,7 +39,6 @@ __published:	// IDE-managed Components
 	TLabel *HWVerLbl;
 	TLabel *SWVerLbl;
 	TLabel *FirmWareDateLbl;
-	TNavitarMotorFrame *TNavitarMotorFrame2;
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall mShutDownTimerTimer(TObject *Sender);

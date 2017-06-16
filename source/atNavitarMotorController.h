@@ -1,5 +1,5 @@
-#ifndef atNavitarMotorControlH
-#define atNavitarMotorControlH
+#ifndef atNavitarMotorControllerH
+#define atNavitarMotorControllerH
 #include "navitar/navusbAPI.h"
 #include <string>
 //#include "atATObject.h"
@@ -8,12 +8,12 @@
 
 using std::string;
 //!The NavitarMotorControl class is a Wrapper class for the Navitar USB motor controller API
-class NavitarMotorControl //: public ATObject
+class NavitarMotorController //: public ATObject
 {
    	friend NavitarMotor;
 	public:
-							            NavitarMotorControl();
-							            ~NavitarMotorControl();
+							            NavitarMotorController();
+							            ~NavitarMotorController();
 		bool				            connect();
         bool				            disConnect();
         bool				            isConnected();

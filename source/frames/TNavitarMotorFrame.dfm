@@ -1,16 +1,21 @@
 object NavitarMotorFrame: TNavitarMotorFrame
   Left = 0
   Top = 0
-  Width = 605
-  Height = 471
+  Width = 390
+  Height = 248
   TabOrder = 0
   object MotorGB: TGroupBox
-    Left = 32
-    Top = 36
-    Width = 361
-    Height = 341
+    Left = 0
+    Top = 0
+    Width = 390
+    Height = 248
+    Align = alClient
     Caption = 'UnitGB'
     TabOrder = 0
+    ExplicitLeft = 32
+    ExplicitTop = 36
+    ExplicitWidth = 361
+    ExplicitHeight = 341
     object MaxPosLabel: TIntLabel
       Left = 273
       Top = 195

@@ -1,5 +1,5 @@
 #pragma hdrstop
-#include "atNavitarMotorControl.h"
+#include "atNavitarMotorController.h"
 #include "mtkLogger.h"
 #include "poco/DateTime.h"
 
@@ -12,7 +12,7 @@ using namespace mtk;
 using Poco::DateTime;
 
 //---------------------------------------------------------------------------
-NavitarMotorControl::NavitarMotorControl()
+NavitarMotorController::NavitarMotorController()
 :
 mMotorControllerHandle(0),
 mZoom( *this,2),
@@ -21,22 +21,22 @@ mFocus(*this,1)
 }
 
 //---------------------------------------------------------------------------
-NavitarMotorControl::~NavitarMotorControl()
+NavitarMotorController::~NavitarMotorController()
 {
 }
 
-NavitarMotor& NavitarMotorControl::getZoom()
+NavitarMotor& NavitarMotorController::getZoom()
 {
 	return mZoom;
 }
 
-NavitarMotor& NavitarMotorControl::getFocus()
+NavitarMotor& NavitarMotorController::getFocus()
 {
 	return mFocus;
 }
 
 //---------------------------------------------------------------------------
-bool NavitarMotorControl::connect()
+bool NavitarMotorController::connect()
 {
     //Check for connected devices
     int res = USBFindUSBinterfaces();
@@ -61,7 +61,7 @@ bool NavitarMotorControl::connect()
 }
 
 //---------------------------------------------------------------------------
-bool NavitarMotorControl::disConnect()
+bool NavitarMotorController::disConnect()
 {
 	int res = USBConnectionDisconnect(mMotorControllerHandle);
     mMotorControllerHandle = 0;
@@ -69,13 +69,13 @@ bool NavitarMotorControl::disConnect()
 }
 
 //---------------------------------------------------------------------------
-bool NavitarMotorControl::isConnected()
+bool NavitarMotorController::isConnected()
 {
     return ((mMotorControllerHandle > 0) && mMotorControllerHandle != 256) ? true : false;
 }
 
 //---------------------------------------------------------------------------
-int	NavitarMotorControl::write(const int& reg, long value)
+int	NavitarMotorController::write(const int& reg, long value)
 {
 	if(mMotorControllerHandle)
     {
@@ -86,7 +86,7 @@ int	NavitarMotorControl::write(const int& reg, long value)
 }
 
 //---------------------------------------------------------------------------
-int	NavitarMotorControl::read(const int& reg, long& value)
+int	NavitarMotorController::read(const int& reg, long& value)
 {
 	if(mMotorControllerHandle)
     {
@@ -97,7 +97,7 @@ int	NavitarMotorControl::read(const int& reg, long& value)
 }
 
 //---------------------------------------------------------------------------
-bool NavitarMotorControl::home()
+bool NavitarMotorController::home()
 {
 	mZoom.home();
     mFocus.home();
@@ -105,7 +105,7 @@ bool NavitarMotorControl::home()
 }
 
 //---------------------------------------------------------------------------
-string NavitarMotorControl::getProductID()
+string NavitarMotorController::getProductID()
 {
     if(!mMotorControllerHandle)
     {
@@ -132,7 +132,7 @@ string NavitarMotorControl::getProductID()
 }
 
 //---------------------------------------------------------------------------
-string NavitarMotorControl::getDriverSoftwareBuildDate()
+string NavitarMotorController::getDriverSoftwareBuildDate()
 {
     if(!mMotorControllerHandle)
     {
@@ -146,7 +146,7 @@ string NavitarMotorControl::getDriverSoftwareBuildDate()
 }
 
 //---------------------------------------------------------------------------
-string NavitarMotorControl::getHardwareVersion()
+string NavitarMotorController::getHardwareVersion()
 {
     if(!mMotorControllerHandle)
     {
@@ -160,7 +160,7 @@ string NavitarMotorControl::getHardwareVersion()
 }
 
 //---------------------------------------------------------------------------
-string NavitarMotorControl::getSoftwareVersion()
+string NavitarMotorController::getSoftwareVersion()
 {
 	long val;
     int res = USBConnectionRead(mMotorControllerHandle, REG_SYS_VERSIONSW, &val);
@@ -169,7 +169,7 @@ string NavitarMotorControl::getSoftwareVersion()
 }
 
 //---------------------------------------------------------------------------
-string NavitarMotorControl::parseVersion(long val)
+string NavitarMotorController::parseVersion(long val)
 {
 	int major 	= (int) (((uint) val & 0xff000000) >> 24);
     int minor	= (int) (((uint) val & 0xff0000) >> 16);
@@ -182,7 +182,7 @@ string NavitarMotorControl::parseVersion(long val)
 }
 
 //---------------------------------------------------------------------------
-string NavitarMotorControl::parseDate(long val)
+string NavitarMotorController::parseDate(long val)
 {
 	int major 	= (int) (((uint) val & 0xff000000) >> 24);
     int minor	= (int) (((uint) val & 0xff0000) >> 16);
@@ -193,7 +193,7 @@ string NavitarMotorControl::parseDate(long val)
 	return Poco::DateTimeFormatter::format(dt, "%n/%f/%Y");
 }
 
-bool NavitarMotorControl::setPreset(int zoom, int focus)
+bool NavitarMotorController::setPreset(int zoom, int focus)
 {
     mZoom.setPosition(zoom);
     mFocus.setPosition(focus);

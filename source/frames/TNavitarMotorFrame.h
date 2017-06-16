@@ -29,7 +29,6 @@ class TNavitarMotorFrame : public TFrame
 	void __fastcall MotorPositionTimerTimer(TObject *Sender);
 	void __fastcall MotorPositionKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 
-
     private:
 		NavitarMotor*			mMotor;
 
